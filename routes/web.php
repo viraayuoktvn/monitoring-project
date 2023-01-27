@@ -31,7 +31,11 @@ Route::get('/perspektif', [PerspektifController::class, 'create']);
 
 Route::get('/kontrak_manajemen', [Kontrak_ManajemenController::class, 'index']);
 Route::get('/kontrak_manajemen/create', [Kontrak_ManajemenController::class, 'create']);
+Route::post('/kontrak_manajemen/store', [Kontrak_ManajemenController::class, 'store']);
 
 Route::get('/iku', [IKUController::class, 'index']);
 Route::get('/iku/create', [IKUController::class, 'create']);
 
+Route::get('/dbconn', function () {
+    return view('dbconn');
+});

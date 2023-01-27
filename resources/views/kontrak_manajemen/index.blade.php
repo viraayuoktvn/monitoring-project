@@ -2,8 +2,14 @@
 
 @section('content')
 
-<div class="col-md-12">
-    <h1 class="mt-4"> KONTRAK MANAJEMEN </h1>
+@if($message = Session::get('success'))
+    <div class="alert alert-success">
+        {{ $message }}
+    </div>
+@endif
+
+<div class="mt-0">
+    <h1> KONTRAK MANAJEMEN </h1>
     <hr>
     <a href="/kontrak_manajemen/create" class="btn mb-3">Add New</a>
     
@@ -25,7 +31,10 @@
             </tr>
         </thead>
         
-        {{-- <tbody>
+        <tbody>
+            <?php 
+                $i = 1;
+            ?>
             @foreach($kontrak as $k)
                 <tr>
                     <th scope = "row"><?= $i++; ?>
@@ -39,7 +48,7 @@
                     <td>{{ $k["hcfd"] }}</td>
                 </tr>
             @endforeach
-        </tbody> --}}
+        </tbody>
     </table>
 </div>
 

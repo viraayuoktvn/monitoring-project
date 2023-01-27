@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="col-8">
-    <h2 class="my-3"> PERSPEKTIF </h2>
+    <h1 class="my-3"> PERSPEKTIF </h1>
 </div>
 
 <hr>

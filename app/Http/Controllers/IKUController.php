@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\IKUModel;
 
 class IKUController extends Controller
 {
     public function index ()
     {
+        $iku = IKUModel::all();
+
         return view('iku/index', [
-            "title" => "IKU"
+            "title" => "IKU",
+            "iku" => $iku
         ]);
     }
 
