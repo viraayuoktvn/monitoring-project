@@ -23,4 +23,28 @@ class IKUController extends Controller
             "title" => "IKU | Add"
         ]);
     }
+
+    public function store (Request $request)
+    {
+        $request->validate([
+            'perspektif' => 'required'
+        ]);
+
+        $iku = new IKUModel();
+
+        $iku->tahun = $request->tahun;
+        $iku->perspektif = $request->perspektif;
+        $iku->ikuatasan = $request->ikuatasan;
+        $iku->target_ka = $request->target_ka;
+        $iku->iku = $request->iku;
+        $iku->target_iku = $request->target_iku;
+        $iku->satuan = $request->satuan;
+        $iku->polaritas = $request->polaritas;
+        $iku->bobot = $request->bobot;
+        $iku->programkerja = $request->programkerja;
+        $iku->pj = $request->pj;
+
+        $iku->save();
+        return redirect('/iku')->with('success', 'Data berhasil ditambahkan.');
+    }
 }

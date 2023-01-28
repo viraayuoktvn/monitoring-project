@@ -24,6 +24,7 @@ return new class extends Migration
             $table->integer('bobot');
             $table->string('pd');
             $table->string('hcfd');
+            $table->timestamps();
         });
     }
 

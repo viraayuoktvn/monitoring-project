@@ -16,7 +16,7 @@
         <form class="d-flex justify-between gap-0">
             <input
                 type="search"
-                class="form-control mx-1 my-2 "
+                class="form-control mx-1 my-2"
                 placeholder="Search..."
                 aria-label="Search"
                 aria-describedby="search-addon"

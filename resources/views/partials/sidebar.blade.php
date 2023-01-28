@@ -15,8 +15,9 @@
         </button>
     </div>
     
-    <a href="#"><button class="btn-sidebar">Beranda</button></a>
+    <a href="/perspektif"><button class="btn-sidebar">Beranda</button></a>
     <a href="#"><button class="btn-sidebar">Dashboard</button></a>
-    <a href="/kontrak_manajemen"><button class="btn-sidebar">Kontrak Manajemen</button></a>
-    <a href="#"><button class="btn-sidebar">Indikator Kinerja Utama</button></a>
+    <a href="/kontrak_manajemen/index"><button class="btn-sidebar">Kontrak Manajemen v1</button></a>
+    <a href="/kontrak_manajemen/indexv2"><button class="btn-sidebar">Kontrak Manajemen v2</button></a>
+    <a href="/iku"><button class="btn-sidebar">Indikator Kinerja Utama</button></a>
 </div>
