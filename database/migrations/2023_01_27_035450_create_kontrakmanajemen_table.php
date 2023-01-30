@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('kontrakmanajemen', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('perspektif_id')->unsigned();
             $table->integer('tahun');
             $table->string('sasaranstrategis');
             $table->string('kpi');

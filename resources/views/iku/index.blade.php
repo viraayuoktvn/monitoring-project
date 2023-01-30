@@ -32,16 +32,16 @@
             <?php foreach($iku as $ik) : ?>
             <tr>
                 <th scope = "row"><?= $i++; ?>
-                <td><?= $ik['perspektif']; ?></td>
-                <td><?= $ik['ikuatasan']; ?></td>
-                <td><?= $ik['target_ka']; ?></td>
-                <td><?= $ik['iku']; ?></td>
-                <td><?= $ik['target_iku']; ?></td>
-                <td><?= $ik['satuan']; ?></td>
-                <td><?= $ik['polaritas']; ?></td>
-                <td><?= $ik['bobot']; ?></td>
-                <td><?= $ik['programkerja']; ?></td>
-                <td><?= $ik['pj']; ?></td>
+                <td>{{ $ik['perspektif'] }}</td>
+                <td>{{ $ik['ikuatasan'] }}</td>
+                <td>{{ $ik['target_ka'] }}</td>
+                <td>{{ $ik['iku'] }}</td>
+                <td>{{ $ik['target_iku'] }}</td>
+                <td>{{ $ik['satuan'] }}</td>
+                <td>{{ $ik['polaritas'] }}</td>
+                <td>{{ $ik['bobot'] }}</td>
+                <td>{{ $ik['programkerja'] }}</td>
+                <td>{{ $ik['pj'] }}</td>
             </tr>
         <?php endforeach ?>
         </tbody>

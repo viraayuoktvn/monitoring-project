@@ -80,10 +80,12 @@ a {
 
 #main-content {
     transition: 0.4s;
+    width: 100%;
 }
 
 .container {
     height: 100%;
+    width: 100%;
     padding-top: 100px;
     padding-left: 250px;
     position: absolute;
@@ -146,13 +148,21 @@ h5 {
     margin-top: 10px;
 }
 
+.dropdown-tahun {
+    width: calc(30%-100px);
+    background-color: #1A9ABA;
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+}
+
 table {
-    width: 50%;
+    width: 100%;
     -webkit-text-fill-color: #7A808E;
     border: 2.5px solid;
     border-color: #F5F5F5;
     border-collapse: collapse;
     overflow: auto;
+    margin-top: 20px;
 }
 
 .table > tbody > tr > * {
