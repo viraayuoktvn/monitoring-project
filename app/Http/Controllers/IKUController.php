@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\IKUModel;
+use App\Models\IKUModelV2;
 
 class IKUController extends Controller
 {
@@ -45,6 +46,42 @@ class IKUController extends Controller
         $iku->pj = $request->pj;
 
         $iku->save();
-        return redirect('/iku')->with('success', 'Data berhasil ditambahkan.');
+        return redirect('/iku/index')->with('success', 'Data berhasil ditambahkan.');
+    }
+
+    public function indexv2 ()
+    {
+        $iku1 = IKUModelV2::all();
+
+        return view('iku/index2', [
+            "title" => "IKU",
+            "iku1" => $iku1
+        ]);
+    }
+
+    public function createv2 ()
+    {
+        return view('iku/create2', [
+            "title" => "IKU | Add"
+        ]);
+    }
+
+    public function storev2 (Request $request)
+    {
+        $request->validate([
+            'kpi' => 'required'
+        ]);
+
+        $iku1 = new IKUModelV2();
+
+        $iku1->tahun = $request->tahun;
+        $iku1->kpi = $request->kpi;
+        $iku1->bobot = $request->bobot;
+        $iku1->target = $request->target;
+        $iku1->satuan = $request->satuan;
+        $iku1->bulan = $request->bulan;
+
+        $iku1->save();
+        return redirect('/iku/indexv2')->with('success', 'Data berhasil ditambahkan.');
     }
 }

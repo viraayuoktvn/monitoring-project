@@ -42,9 +42,7 @@
         </thead>
         
         <tbody>
-            <?php 
-                $i = 1;
-            ?>
+            <?php $i = 1; ?>
             @foreach($kontrak as $k)
                 <tr>
                     <th scope = "row"><?= $i++; ?>
