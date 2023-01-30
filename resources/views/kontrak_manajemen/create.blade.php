@@ -10,7 +10,7 @@
             @endforeach
         </ul>
     </div>
-@endif --}}
+@endif
 
 <div class="col-md-12">
     <h1 class="mt-4"> KONTRAK MANAJEMEN </h1>

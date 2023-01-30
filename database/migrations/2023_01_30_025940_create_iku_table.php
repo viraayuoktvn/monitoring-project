@@ -13,18 +13,22 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kontrakmanajemen', function (Blueprint $table) {
+        Schema::create('iku', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('perspektif_id')->unsigned();
+            $table->foreignId('perspektif_id')
+            ->constrained('perspektif')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->integer('tahun');
-            $table->string('sasaranstrategis');
-            $table->string('kpi');
-            $table->string('target');
+            $table->string('ikuatasan');
+            $table->string('target_ka');
+            $table->string('iku');
+            $table->string('target_iku');
             $table->string('satuan');
             $table->string('polaritas');
             $table->integer('bobot');
-            $table->string('pd');
-            $table->string('hcfd');
+            $table->string('programkerja');
+            $table->string('pj');
             $table->timestamps();
         });
     }
@@ -36,6 +40,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kontrakmanajemen');
+        Schema::dropIfExists('iku');
     }
 };
