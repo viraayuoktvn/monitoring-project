@@ -24,7 +24,7 @@ class Kontrak_ManajemenController extends Controller
         ]);
     }
 
-    public function store (Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'sasaranstrategis' => 'required'
@@ -43,7 +43,8 @@ class Kontrak_ManajemenController extends Controller
         $kontrak->hcfd = $request->hcfd;
 
         $kontrak->save();
-        return redirect()->route('kontrak_manajemen/index')->with('success', 'Data berhasil ditambahkan.');
+        // return redirect()->route('kontrak_manajemen')->with('success', 'Data berhasil ditambahkan.');
+        return redirect('/kontrak_manajemen')->with('success', 'Data berhasil ditambahkan.');
     }
 
 }

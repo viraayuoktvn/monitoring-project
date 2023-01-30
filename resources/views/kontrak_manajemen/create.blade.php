@@ -2,7 +2,7 @@
 
 @section('content')
 
-@if($errors->any)
+{{-- @if($errors->any)
     <div class="alert alert-danger">
         <ul>
             @foreach($errors->all() as $error)
@@ -10,7 +10,7 @@
             @endforeach
         </ul>
     </div>
-@endif
+@endif --}}
 
 <div class="col-md-12">
     <h1 class="mt-4"> KONTRAK MANAJEMEN </h1>
@@ -26,22 +26,22 @@
 
         <div class="mb-3">
             <label class="label">Sasaran Strategis</label>
-            <input type="text" name="sasaranstrategis" id="sasaranstrategis" class="form-control"></input>
+            <input type="text" name="sasaranstrategis" id="sasaranstrategis" class="form-control">
         </div>
 
         <div class="mb-3">
             <label class="label"><em>Key Performance Indicator</em></label>
-            <input type="text" name="kpi" id="kpi" class="form-control"></input>
+            <input type="text" name="kpi" id="kpi" class="form-control">
         </div>
 
         <div class="mb-3">
             <label class="label">Target</label>
-            <input type="text" name="target" id="target" class="form-control"></input>
+            <input type="text" name="target" id="target" class="form-control">
         </div>
 
         <div class="mb-3">
             <label class="label">Satuan</label>
-            <input type="text" name="satuan" id="satuan" class="form-control"></input>
+            <input type="text" name="satuan" id="satuan" class="form-control">
         </div>
 
         <div class="mb-3">
@@ -56,7 +56,7 @@
 
         <div class="mb-3">
             <label class="label">Bobot</label>
-            <input type="int" name="bobot" id="bobot" class="form-control"></input>
+            <input type="int" name="bobot" id="bobot" class="form-control">
         </div>
         
         <div class="mb-3">
@@ -88,4 +88,5 @@
         </div>
     </form>
 </div>
+
 @endsection
