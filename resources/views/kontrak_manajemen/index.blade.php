@@ -47,7 +47,7 @@
             @foreach($kontrak as $k)
                 <tr>
                     <th scope = "row"><?= $i++; ?>
-                    <td>{{ $k["perspektif_id"] }}</td>
+                    <td>{{ $k->perspektif["desc_perspektif"] }}</td>
                     <td>{{ $k["kpi"] }}</td>
                     <td>{{ $k["target"] }}</td>
                     <td>{{ $k["satuan"] }}</td>

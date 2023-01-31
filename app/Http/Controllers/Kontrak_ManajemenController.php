@@ -12,8 +12,9 @@ class Kontrak_ManajemenController extends Controller
 {
     public function index()
     {
-        $kontrak = Kontrak_Manajemen::with('perspektif');
+        // $kontrak = Kontrak_Manajemen::with('perspektif');
         // $perspektif = PerspektifModel::all();
+        $kontrak = Kontrak_Manajemen::all();
         
         return view('kontrak_manajemen/index', [
             "title" => "Kontrak Manajemen",
@@ -42,7 +43,7 @@ class Kontrak_ManajemenController extends Controller
         $perspektif = new PerspektifModel;
 
         $kontrak->tahun = $request->tahun;
-        $kontrak->perspektif_id = $request->perspektif_id->desc_perspektif;
+        $kontrak->perspektif_id = $request->perspektif_id;
         $kontrak->kpi = $request->kpi;
         $kontrak->target = $request->target;
         $kontrak->satuan = $request->satuan;

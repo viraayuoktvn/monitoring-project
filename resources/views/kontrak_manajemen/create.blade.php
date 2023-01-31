@@ -37,7 +37,7 @@
                 <div class="mb-3">
                     <select name="perspektif_id" id="perspektif_id">
                         @foreach($perspektif as $p)
-                        <option value="{{ $p['desc_perspektif'] }}">{{ $p['desc_perspektif'] }}</option>
+                        <option value="{{ $p->id }}">{{ $p['desc_perspektif'] }}</option>
                         @endforeach
                     </select>
                 </div>
