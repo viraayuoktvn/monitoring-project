@@ -4,37 +4,45 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kontrak_Manajemen;
+use App\Models\PerspektifModel;
 use App\Models\Kontrak_ManajemenV2;
+
 
 class Kontrak_ManajemenController extends Controller
 {
     public function index()
     {
-        $kontrak = Kontrak_Manajemen::all();
+        $kontrak = Kontrak_Manajemen::with('perspektif');
+        // $perspektif = PerspektifModel::all();
         
         return view('kontrak_manajemen/index', [
             "title" => "Kontrak Manajemen",
-            "kontrak" => $kontrak
+            "kontrak" => $kontrak,
+            // "perspektif" => $perspektif
         ]);
     }
 
     public function create()
     {
+        $perspektif = PerspektifModel::all();
+
         return view('kontrak_manajemen/create', [
-            "title" => "Kontrak Manajemen | Add"
+            "title" => "Kontrak Manajemen | Add",
+            "perspektif" => $perspektif
         ]);
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'sasaranstrategis' => 'required'
-        ]);
+        // $request->validate([
+        //     'perspektif_id' => 'required'
+        // ]);
 
         $kontrak = new Kontrak_Manajemen;
+        $perspektif = new PerspektifModel;
 
         $kontrak->tahun = $request->tahun;
-        $kontrak->sasaranstrategis = $request->sasaranstrategis;
+        $kontrak->perspektif_id = $request->perspektif_id->desc_perspektif;
         $kontrak->kpi = $request->kpi;
         $kontrak->target = $request->target;
         $kontrak->satuan = $request->satuan;

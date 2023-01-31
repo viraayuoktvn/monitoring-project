@@ -34,7 +34,14 @@
         <div class="row py-3">
             <div class="col">
                 <label class="label">Sasaran Strategis</label>
-                <input type="text" name="sasaranstrategis" id="sasaranstrategis" class="form-control"></input>
+                <div class="mb-3">
+                    <select name="perspektif_id" id="perspektif_id">
+                        @foreach($perspektif as $p)
+                        <option value="{{ $p['desc_perspektif'] }}">{{ $p['desc_perspektif'] }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
             </div>
     
             <div class="col">

@@ -19,6 +19,10 @@ return new class extends Migration
             ->constrained('perspektif')
             ->onUpdate('cascade')
             ->onDelete('cascade');
+            $table->foreignId('unitkerja_id')
+            ->constrained('unitkerja')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->integer('tahun');
             $table->string('ikuatasan');
             $table->string('target_ka');

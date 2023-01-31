@@ -10,4 +10,8 @@ class Kontrak_Manajemen extends Model
     use HasFactory;
     protected $table='kontrakmanajemen';
     
+    public function perspektif()
+    {
+        return $this->belongsTo(PerspektifModel::class);
+    }
 }

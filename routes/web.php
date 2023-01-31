@@ -28,6 +28,8 @@ Route::get('/', function () {
 });
 
 Route::get('/perspektif', [PerspektifController::class, 'create']);
+Route::post('/perspektif/store', [PerspektifController::class, 'store']);
+
 
 Route::get('/kontrak_manajemen/index', [Kontrak_ManajemenController::class, 'index']);
 Route::get('/kontrak_manajemen/create', [Kontrak_ManajemenController::class, 'create']);
@@ -44,6 +46,10 @@ Route::post('/iku/store', [IKUController::class, 'store']);
 Route::get('/iku/indexv2', [IKUController::class, 'indexv2']);
 Route::get('/iku/createv2', [IKUController::class, 'createv2']);
 Route::post('/iku/storev2', [IKUController::class, 'storev2']);
+
+Route::get('/test', function () {
+    return view('test');
+});
 
 Route::get('/dbconn', function () {
     return view('dbconn');

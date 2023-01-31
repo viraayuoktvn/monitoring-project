@@ -14,8 +14,9 @@
     <div class="row justify-between">
         <div class="col">
             <select name="tahun" id="tahun" placeholder="Tahun" class="dropdown-tahun">
-                <option value="2019">2019</option>
-                <option value="2020">2020</option>
+                @foreach($kontrak as $k)
+                <option value="{{ $k['tahun'] }}">{{ $k['tahun'] }}</option>
+                @endforeach
             </select>
         </div>
         <div class="col">
@@ -46,7 +47,7 @@
             @foreach($kontrak as $k)
                 <tr>
                     <th scope = "row"><?= $i++; ?>
-                    <td>{{ $k["sasaranstrategis"] }}</td>
+                    <td>{{ $k["perspektif_id"] }}</td>
                     <td>{{ $k["kpi"] }}</td>
                     <td>{{ $k["target"] }}</td>
                     <td>{{ $k["satuan"] }}</td>
