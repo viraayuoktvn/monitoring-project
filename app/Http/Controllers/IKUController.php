@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\IKUModel;
+use App\Models\PerspektifModel;
+use App\Models\UnitKerjaModel;
 use App\Models\IKUModelV2;
 
 class IKUController extends Controller
@@ -11,30 +13,38 @@ class IKUController extends Controller
     public function index ()
     {
         $iku = IKUModel::all();
+        $unitkerja = UnitKerjaModel::all();
 
         return view('iku/index', [
             "title" => "IKU",
-            "iku" => $iku
+            "iku" => $iku,
+            "unitkerja" => $unitkerja
         ]);
     }
 
     public function create ()
     {
+        $perspektif = PerspektifModel::all();
+        $unitkerja = UnitKerjaModel::all();
+
         return view('iku/create', [
-            "title" => "IKU | Add"
+            "title" => "IKU | Add",
+            "perspektif" => $perspektif,
+            "unitkerja" => $unitkerja
         ]);
     }
 
     public function store (Request $request)
     {
         $request->validate([
-            'perspektif' => 'required'
+            'perspektif_id' => 'required'
         ]);
 
-        $iku = new IKUModel();
+        $iku = new IKUModel;
 
         $iku->tahun = $request->tahun;
-        $iku->perspektif = $request->perspektif;
+        $iku->perspektif_id = $request->perspektif_id;
+        $iku->unitkerja_id = $request->unitkerja_id;
         $iku->ikuatasan = $request->ikuatasan;
         $iku->target_ka = $request->target_ka;
         $iku->iku = $request->iku;
@@ -49,39 +59,42 @@ class IKUController extends Controller
         return redirect('/iku/index')->with('success', 'Data berhasil ditambahkan.');
     }
 
-    public function indexv2 ()
+    public function eval_index ()
     {
-        $iku1 = IKUModelV2::all();
+        $evaliku = IKUModelV2::all();
+        $unitkerja = UnitKerjaModel::all();
 
-        return view('iku/index2', [
+        return view('iku/eval_index', [
             "title" => "IKU",
-            "iku1" => $iku1
+            "evaliku" => $evaliku,
+            "unitkerja" => $unitkerja
         ]);
     }
 
-    public function createv2 ()
+    public function eval_create ()
     {
-        return view('iku/create2', [
-            "title" => "IKU | Add"
+        $iku = IKUModel::all();
+
+        return view('iku/eval_create', [
+            "title" => "IKU | Add",
+            "iku" => $iku
         ]);
     }
 
-    public function storev2 (Request $request)
+    public function eval_store (Request $request)
     {
         $request->validate([
-            'kpi' => 'required'
+            'iku_id' => 'required'
         ]);
 
-        $iku1 = new IKUModelV2();
+        $evaliku = new IKUModelV2();
 
-        $iku1->tahun = $request->tahun;
-        $iku1->kpi = $request->kpi;
-        $iku1->bobot = $request->bobot;
-        $iku1->target = $request->target;
-        $iku1->satuan = $request->satuan;
-        $iku1->bulan = $request->bulan;
+        $evaliku->tahun = $request->tahun;
+        $evaliku->iku_id = $request->iku_id;
+        $evaliku->bulan = $request->bulan;
+        $evaliku->real = $request->real;
 
-        $iku1->save();
-        return redirect('/iku/indexv2')->with('success', 'Data berhasil ditambahkan.');
+        $evaliku->save();
+        return redirect('/iku/eval_index')->with('success', 'Data berhasil ditambahkan.');
     }
 }

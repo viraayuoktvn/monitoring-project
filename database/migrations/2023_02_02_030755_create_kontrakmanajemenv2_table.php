@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ikuv2', function (Blueprint $table) {
+        Schema::create('kontrakmanajemenv2', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('kontrakmanajemen_id')
+            ->constrained('kontrakmanajemen')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->integer('tahun');
-            $table->string('kpi');
-            $table->integer('bobot');
-            $table->double('target', 8, 2);
-            $table->string('satuan');
-            $table->string('bulan');
+            $table->double('real');
+            $table->timestamps();
         });
     }
 
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ikuv2');
+        Schema::dropIfExists('kontrakmanajemenv2');
     }
 };

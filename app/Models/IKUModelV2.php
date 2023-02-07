@@ -11,4 +11,9 @@ class IKUModelV2 extends Model
 
     protected $table='ikuv2';
 
+    public function iku()
+    {
+        return $this->belongsTo(IKUModel::class);
+    }
+
 }

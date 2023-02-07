@@ -34,7 +34,11 @@
         <div class="row py-3">
             <div class="col">
                 <label class="label">Perspektif</label>
-                <input type="text" name="perspektif" id="perspektif" class="form-control"></input>      
+                <select name="perspektif_id" id="perspektif_id">
+                    @foreach($perspektif as $p)
+                    <option value="{{ $p->id }}">{{ $p['desc_perspektif'] }}</option>
+                    @endforeach
+                </select>    
             </div>
             
             <div class="col">
@@ -89,10 +93,17 @@
             </div>
 
             <div class="col">
-                <div class="py-4">
-                    <button type="submit" class="btn">Add New</button>
-                </div>
+                <label class="label">Unit Kerja</label>
+                <select name="unitkerja_id" id="unitkerja_id">
+                    @foreach($unitkerja as $uk)
+                    <option value="{{ $uk->id }}">{{ $uk['name_dept'] }}</option>
+                    @endforeach
+                </select>   
             </div>
+        </div>
+
+        <div class="py-4">
+            <button type="submit" class="btn">Add New</button>
         </div>
     </form>
 </div>

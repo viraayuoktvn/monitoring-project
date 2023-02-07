@@ -5,9 +5,27 @@
 <div class="col-md-12">
     <h1 class="mt-4"> INDIKATOR KINERJA UTAMA </h1>
     <hr>
-    <a href="/iku/create" class="btn mb-3">Add New</a>
+    <div class="row justify-between">
+        <div class="col">
+            <select name="tahun" id="tahun" placeholder="Tahun" class="dropdown-tahun">
+                @foreach($iku as $ik)
+                <option value="{{ $ik['tahun'] }}">{{ $ik['tahun'] }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col">
+            <select name="unitkerja" id="unitkerja" placeholder="Unit Kerja" class="dropdown-tahun">
+                @foreach($unitkerja as $uk)
+                <option value="{{ $uk->id }}">{{ $uk['name_dept'] }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col">
+            <a href="/iku/create" class="btn mb-3">Add New</a>
+        </div>
+    </div>
     
-    <table class="table text-center">
+    <table class="table text-center" id="myTable">
         <thead>
             <tr>
                 <th rowspan="2">No.</th>
@@ -27,24 +45,43 @@
             </tr>
         </thead>
         
-        <tbody>
-            <?php $i = 1; ?>
-            <?php foreach($iku as $ik) : ?>
-            <tr>
-                <th scope = "row"><?= $i++; ?>
-                <td>{{ $ik['perspektif'] }}</td>
-                <td>{{ $ik['ikuatasan'] }}</td>
-                <td>{{ $ik['target_ka'] }}</td>
-                <td>{{ $ik['iku'] }}</td>
-                <td>{{ $ik['target_iku'] }}</td>
-                <td>{{ $ik['satuan'] }}</td>
-                <td>{{ $ik['polaritas'] }}</td>
-                <td>{{ $ik['bobot'] }}</td>
-                <td>{{ $ik['programkerja'] }}</td>
-                <td>{{ $ik['pj'] }}</td>
-            </tr>
-        <?php endforeach ?>
-        </tbody>
+        <?php $j = 1; ?>
+            @php
+              $groupedData = $iku->groupBy('perspektif.desc_perspektif');
+            @endphp
+            @foreach ($groupedData as $groupedValue => $dataArray)
+              @php
+                $rowspan = $dataArray->count();
+              @endphp
+              <tr>
+                <th scope = "row"><?= $j++; ?>
+                <td rowspan="{{ $rowspan }}">{{ $groupedValue }}</td>
+                <td>{{ $dataArray[0]->ikuatasan }}</td>
+                <td>{{ $dataArray[0]->target_ka }}</td>
+                <td>{{ $dataArray[0]->iku }}</td>
+                <td>{{ $dataArray[0]->target_iku }}</td>
+                <td>{{ $dataArray[0]->satuan }}</td>
+                <td>{{ $dataArray[0]->polaritas }}</td>
+                <td>{{ $dataArray[0]->bobot }}</td>
+                <td>{{ $dataArray[0]->programkerja }}</td>
+                <td>{{ $dataArray[0]->pj }}</td>
+              </tr>
+              @for ($i = 1; $i < $rowspan; $i++)
+                <tr>
+                    <th scope = "row"><?= $j++; ?>
+                    <td>{{ $dataArray[$i]->ikuatasan }}</td>
+                    <td>{{ $dataArray[$i]->target_ka }}</td>
+                    <td>{{ $dataArray[$i]->iku }}</td>
+                    <td>{{ $dataArray[$i]->target_iku }}</td>
+                    <td>{{ $dataArray[$i]->satuan }}</td>
+                    <td>{{ $dataArray[$i]->polaritas }}</td>
+                    <td>{{ $dataArray[$i]->bobot }}</td>
+                    <td>{{ $dataArray[$i]->programkerja }}</td>
+                    <td>{{ $dataArray[$i]->pj }}</td>
+                </tr>
+              @endfor
+            @endforeach
+          </tbody>
     </table>
 </div>
 

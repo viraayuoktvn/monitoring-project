@@ -9,7 +9,7 @@
                 <div class="three"></div>
             </div>
             <a class="navbar-brand" href="/">
-                <img src="/images/pt-ksp-1.svg" alt="Logo KSP" width="full" height="50"/>
+                <img src="/images/pt-ksp-1.png" alt="Logo KSP" width="full" height="50"/>
             </a>
         </div>
 
@@ -23,10 +23,10 @@
             />
             <div class="d-flex">
                 <button type="submit" class="btnnavbar" hrf="#">
-                    <img src="/images/settings.svg" alt="settings" height="25"/>                    
+                    <img src="/images/settings.png" alt="settings" height="25"/>                    
                 </button>
                 <button type="submit" class="btnnavbar" href="#">
-                    <img src="/images/logout.svg" alt="logout" height="25"/>
+                    <img src="/images/logout.png" alt="logout" height="25"/>
                 </button>
             </div>
         </form>

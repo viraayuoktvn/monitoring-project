@@ -24,7 +24,7 @@
         </div>
     </div>
     
-    <table class="table text-center">
+    <table class="table text-center" id="myTable">
         <thead>
             <tr>
                 <th rowspan="2">No.</th>
@@ -41,23 +41,41 @@
                 <th>HCFD</th>
             </tr>
         </thead>
-        
+
         <tbody>
-            <?php $i = 1; ?>
-            @foreach($kontrak as $k)
+            <?php $j = 1; ?>
+            @php
+              $groupedData = $kontrak->groupBy('perspektif.desc_perspektif');
+            @endphp
+            @foreach ($groupedData as $groupedValue => $dataArray)
+              @php
+                $rowspan = $dataArray->count();
+              @endphp
+              <tr>
+                <th scope = "row"><?= $j; ?>
+                <td rowspan="{{ $rowspan }}">{{ $groupedValue }}</td>
+                <td>{{ $dataArray[0]->kpi }}</td>
+                <td>{{ $dataArray[0]->target }}</td>
+                <td>{{ $dataArray[0]->satuan }}</td>
+                <td>{{ $dataArray[0]->polaritas }}</td>
+                <td>{{ $dataArray[0]->bobot }}</td>
+                <td>{{ $dataArray[0]->pd }}</td>
+                <td>{{ $dataArray[0]->hcfd }}</td>
+              </tr>
+              @for ($i = 1; $i < $rowspan; $i++)
                 <tr>
-                    <th scope = "row"><?= $i++; ?>
-                    <td>{{ $k->perspektif["desc_perspektif"] }}</td>
-                    <td>{{ $k["kpi"] }}</td>
-                    <td>{{ $k["target"] }}</td>
-                    <td>{{ $k["satuan"] }}</td>
-                    <td>{{ $k["polaritas"] }}</td>
-                    <td>{{ $k["bobot"] }}</td>
-                    <td>{{ $k["pd"] }}</td>
-                    <td>{{ $k["hcfd"] }}</td>
+                    <th scope = "row"><?= $j; ?>
+                    <td>{{ $dataArray[$i]->kpi }}</td>
+                    <td>{{ $dataArray[$i]->target }}</td>
+                    <td>{{ $dataArray[$i]->satuan }}</td>
+                    <td>{{ $dataArray[$i]->polaritas }}</td>
+                    <td>{{ $dataArray[$i]->bobot }}</td>
+                    <td>{{ $dataArray[$i]->pd }}</td>
+                    <td>{{ $dataArray[$i]->hcfd }}</td>
                 </tr>
+              @endfor
             @endforeach
-        </tbody>
+          </tbody>
     </table>
 </div>
 

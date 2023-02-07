@@ -14,4 +14,9 @@ class Kontrak_Manajemen extends Model
     {
         return $this->belongsTo(PerspektifModel::class);
     }
+
+    public function kontrakmanajemen()
+    {
+        return $this->hasMany(Kontrak_ManajemenV2::class);
+    }
 }

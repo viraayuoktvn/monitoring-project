@@ -10,4 +10,9 @@ class Kontrak_ManajemenV2 extends Model
     use HasFactory;
 
     protected $table = 'kontrakmanajemenv2';
+
+    public function kontrakmanajemen()
+    {
+        return $this->belongsTo(Kontrak_Manajemen::class);
+    }
 }

@@ -12,14 +12,11 @@ class Kontrak_ManajemenController extends Controller
 {
     public function index()
     {
-        // $kontrak = Kontrak_Manajemen::with('perspektif');
-        // $perspektif = PerspektifModel::all();
         $kontrak = Kontrak_Manajemen::all();
         
         return view('kontrak_manajemen/index', [
             "title" => "Kontrak Manajemen",
             "kontrak" => $kontrak,
-            // "perspektif" => $perspektif
         ]);
     }
 
@@ -35,12 +32,11 @@ class Kontrak_ManajemenController extends Controller
 
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'perspektif_id' => 'required'
-        // ]);
+        $request->validate([
+            'perspektif_id' => 'required'
+        ]);
 
         $kontrak = new Kontrak_Manajemen;
-        $perspektif = new PerspektifModel;
 
         $kontrak->tahun = $request->tahun;
         $kontrak->perspektif_id = $request->perspektif_id;
@@ -58,41 +54,40 @@ class Kontrak_ManajemenController extends Controller
 
 
 
-
-    public function indexv2()
+    public function eval_index()
     {
-        $kontrak1 = Kontrak_ManajemenV2::all();
+        $evalkontrak = Kontrak_ManajemenV2::all();
         
-        return view('kontrak_manajemen/index2', [
-            "title" => "Kontrak Manajemen",
-            "kontrak1" => $kontrak1
+        return view('kontrak_manajemen/eval_index', [
+            "title" => "Evaluasi Kontrak Manajemen",
+            "evalkontrak" => $evalkontrak
         ]);
     }
 
-    public function createv2()
+    public function eval_create()
     {
-        return view('kontrak_manajemen/create2', [
-            "title" => "Kontrak Manajemen | Add"
+        $kontrak = Kontrak_Manajemen::all();
+
+        return view('kontrak_manajemen/eval_create', [
+            "title" => "Evaluasi Kontrak Manajemen | Add",
+            "kontrak" => $kontrak
         ]);
     }
 
-    public function storev2 (Request $request)
+    public function eval_store (Request $request)
     {
         $request->validate([
-            'kpi' => 'required'
+            'kontrakmanajemen_id' => 'required'
         ]);
 
-        $kontrak1 = new Kontrak_ManajemenV2;
+        $evalkontrak = new Kontrak_ManajemenV2;
 
-        $kontrak1->tahun = $request->tahun;
-        $kontrak1->kpi = $request->kpi;
-        $kontrak1->bobot = $request->bobot;
-        $kontrak1->target = $request->target;
-        $kontrak1->satuan = $request->satuan;
-        $kontrak1->real = $request->real;
+        $evalkontrak->tahun = $request->tahun;
+        $evalkontrak->kontrakmanajemen_id = $request->kontrakmanajemen_id;
+        $evalkontrak->real = $request->real;
 
-        $kontrak1->save();
-        return redirect('/kontrak_manajemen/indexv2')->with('success', 'Data berhasil ditambahkan.');
+        $evalkontrak->save();
+        return redirect('/kontrak_manajemen/eval_index')->with('success', 'Data berhasil ditambahkan.');
     }
 
 }
