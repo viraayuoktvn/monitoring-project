@@ -13,22 +13,38 @@
             </a>
         </div>
 
-        <form class="d-flex justify-between gap-0">
-            <input
-                type="search"
-                class="form-control mx-1 my-2"
-                placeholder="Search..."
-                aria-label="Search"
-                aria-describedby="search-addon"
-            />
+        @auth
+            <li class="d-flex justify-between gap-0">
+                <input
+                    type="search"
+                    class="form-control mx-1 my-2"
+                    placeholder="Search..."
+                    aria-label="Search"
+                    aria-describedby="search-addon"
+                />
+                <div class="d-flex">
+                    <button type="submit" class="btnnavbar" href="#">
+                        <img src="/images/settings.png" alt="settings" height="25"/>                    
+                    </button>
+                    
+                    <form action="/logout" method="post">
+                        @csrf
+                        <button type="submit" class="btnnavbar mt-3">
+                            <img src="/images/logout.png" alt="logout" height="25"/>
+                        </button>
+                    </form>
+                </div>
+            </li>
+
+        @else
             <div class="d-flex">
-                <button type="submit" class="btnnavbar" hrf="#">
-                    <img src="/images/settings.png" alt="settings" height="25"/>                    
-                </button>
-                <button type="submit" class="btnnavbar" href="#">
-                    <img src="/images/logout.png" alt="logout" height="25"/>
+                <button type="submit" class="btnnavbar" href="/login/index">
+                    <img src="/images/login.png" alt="login" height="25"/>
                 </button>
             </div>
-        </form>
+
+        @endauth
+
+
     </div>
 </nav>
