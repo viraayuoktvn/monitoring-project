@@ -3,7 +3,8 @@
 @auth
     <div class="sidebar sidebar-expand-lg" id="sidebar">
         <div class="profile">
-            <a href="/user">
+            <a href="{{ route('user.edit', auth()->user()->id) }}">
+            {{-- <a href="/user"> --}}
                 <button class="btn-sidebar">
                     <div class="d-flex justify-content-md-end">
                         <div class="img-profile py-2">

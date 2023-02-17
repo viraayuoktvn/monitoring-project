@@ -13,7 +13,7 @@ class UserController extends Controller
         $user = Auth::user();
         return view('user/profile', [
             'title' => 'Edit Profile',
-            'user' => $user
+            'user' => $user,
         ]);
     }
 
@@ -27,7 +27,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->save();
+        $user->update();
     
         return redirect('/user/profile')->with('success', 'Profil berhasil diubah.');
     }

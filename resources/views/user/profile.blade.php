@@ -6,7 +6,8 @@
     <h1 class="mt-4"> EDIT PROFILE </h1>
     <hr>
 
-    <form class="py-3" method="post" action="/user/update">
+    {{-- <form class="py-3" method="post" action="/user/update"> --}}
+    <form class="py-3" method="post" action="{{ route('user.update', $user->id)}}">
         @csrf
         
         <div class="mb-3">
