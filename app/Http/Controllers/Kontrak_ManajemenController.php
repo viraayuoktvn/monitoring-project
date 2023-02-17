@@ -13,10 +13,10 @@ class Kontrak_ManajemenController extends Controller
     public function index()
     {
         $kontrak = Kontrak_Manajemen::all();
-        
         return view('kontrak_manajemen/index', [
             "title" => "Kontrak Manajemen",
             "kontrak" => $kontrak,
+           
         ]);
     }
 
