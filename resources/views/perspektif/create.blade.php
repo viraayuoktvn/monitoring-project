@@ -33,4 +33,5 @@
             <button type="submit" class="btn">Add New</button>
         </div>
     </form>
+</div>
 @endsection

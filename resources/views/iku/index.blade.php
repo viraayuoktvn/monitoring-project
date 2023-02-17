@@ -54,7 +54,8 @@
                 $rowspan = $dataArray->count();
               @endphp
               <tr>
-                <th scope = "row"><?= $j++; ?>
+                {{-- <th scope = "row"><?= $j++; ?> --}}
+                <td rowspan="{{ $rowspan }}">{{ $j++ }}</td>
                 <td rowspan="{{ $rowspan }}">{{ $groupedValue }}</td>
                 <td>{{ $dataArray[0]->ikuatasan }}</td>
                 <td>{{ $dataArray[0]->target_ka }}</td>
@@ -68,7 +69,7 @@
               </tr>
               @for ($i = 1; $i < $rowspan; $i++)
                 <tr>
-                    <th scope = "row"><?= $j++; ?>
+                    {{-- <th scope = "row"><?= $j++; ?> --}}
                     <td>{{ $dataArray[$i]->ikuatasan }}</td>
                     <td>{{ $dataArray[$i]->target_ka }}</td>
                     <td>{{ $dataArray[$i]->iku }}</td>

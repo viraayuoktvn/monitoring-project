@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="col-md-12">
-    <h1 class="mt-4"> INDIKATOR KINERJA UTAMA </h1>
+    <h1 class="mt-4"> EVALUASI INDIKATOR KINERJA UTAMA </h1>
     <hr>
     <div class="row justify-between">
         <div class="col">
