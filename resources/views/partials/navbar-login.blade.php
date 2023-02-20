@@ -14,7 +14,7 @@
         </div>
 
         <div class="d-flex">
-            <button type="submit" class="btnnavbar" href="/login/index">
+            <button type="submit" class="btnnavbar" href="/login">
                 <img src="/images/login.png" alt="login" height="25"/>
             </button>
         </div>
