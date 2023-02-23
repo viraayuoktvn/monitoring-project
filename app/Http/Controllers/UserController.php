@@ -29,6 +29,6 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->update();
     
-        return redirect('/user/profile')->with('success', 'Profil berhasil diubah.');
+        return redirect('/user')->with('success', 'Profil berhasil diubah.');
     }
 }
