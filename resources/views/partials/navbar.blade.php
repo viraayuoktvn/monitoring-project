@@ -38,11 +38,13 @@
 
         @else
             <div class="d-flex">
-                <button type="submit" class="btnnavbar" href="/login/index">
-                    <img src="/images/login.png" alt="login" height="25"/>
-                </button>
+                <form action="/logout" method="post">
+                    @csrf
+                    <button type="submit" class="btnnavbar" href="/login">
+                        <img src="/images/login.png" alt="login" height="25"/>
+                    </button>
+                </form>
             </div>
-
         @endauth
 
 

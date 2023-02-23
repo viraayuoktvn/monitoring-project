@@ -87,6 +87,49 @@ a {
     display: inline;
 }
 
+.edit-profile {
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.avatar-profile-sidebar {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: auto;
+}
+
+.avatar-profile {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: auto;
+}
+
+.avatar-profile img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.form-control-photo {
+    background-color: #EDEDED;
+    width: 270px;
+    border: 1px;
+    border-radius: 100px;
+    padding: 10px 15px 10px 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.h4-profile {
+    color: #7A808E;
+    font-weight: bold;
+}
+
 .active-main-content {
     margin-left: -180px;
     width: 100%;
