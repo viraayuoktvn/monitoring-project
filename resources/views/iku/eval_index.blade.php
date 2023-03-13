@@ -25,7 +25,7 @@
         </div>
     </div>
     
-    <table class="table text-center">
+    <table class="table table-bordered text-center">
         <thead>
             <tr>
                 <th rowspan="2">No.</th>
@@ -37,6 +37,7 @@
                 <th colspan="12">Bulan</th>
                 <th rowspan="2">Kumulatif</th>
                 <th colspan="12">Score</th>
+                <th rowspan="2">Aksi</th>
             </tr>
             <tr>
                 <th>1</th>
@@ -71,26 +72,82 @@
             <?php $i = 1; ?>
 
             @foreach($evaliku as $ik1)
+            {{-- <?php $kumulatif = $ik1->sum('target_iku'); ?> --}}
+            {{-- <?php $score = round() ?>  --}}
             <tr>
-                <th scope = "row"><?= $i++; ?>
-                <td>{{ $ik1->iku['iku'] }}</td>
-                <td>{{ $ik1->iku['bobot'] }}</td>
+                <th rowspan="3" scope = "row"><?= $i++; ?>
+                <td rowspan="3">{{ $ik1->iku['iku'] }}</td>
+                <td rowspan="3">{{ $ik1->iku['bobot'] }}</td>
+                <td rowspan="3">{{ $ik1->iku['target_iku'] }}</td>
+                <td rowspan="3">{{ $ik1->iku['satuan'] }}</td>
+                <td>T</td>
                 <td>{{ $ik1->iku['target_iku'] }}</td>
-                <td>{{ $ik1->iku['satuan'] }}</td>
+                <td>{{ $ik1->iku['target_iku'] }}</td>
+                <td>{{ $ik1->iku['target_iku'] }}</td>
+                <td>{{ $ik1->iku['target_iku'] }}</td>
+                <td>{{ $ik1->iku['target_iku'] }}</td>
+                <td>{{ $ik1->iku['target_iku'] }}</td>
+                <td>{{ $ik1->iku['target_iku'] }}</td>
+                <td>{{ $ik1->iku['target_iku'] }}</td>
+                <td>{{ $ik1->iku['target_iku'] }}</td>
+                <td>{{ $ik1->iku['target_iku'] }}</td>
+                <td>{{ $ik1->iku['target_iku'] }}</td>
+                <td>{{ $ik1->iku['target_iku'] }}</td>
 
-                {{-- <td>{{ $ik1['bulan'] }}</td>
-                <td>{{ $ik1['bulan'] }}</td>
-                <td>{{ $ik1['bulan'] }}</td>
-                <td>{{ $ik1['bulan'] }}</td>
-                <td>{{ $ik1['bulan'] }}</td>
-                <td>{{ $ik1['bulan'] }}</td>
-                <td>{{ $ik1['bulan'] }}</td>
-                <td>{{ $ik1['bulan'] }}</td>
-                <td>{{ $ik1['bulan'] }}</td>
-                <td>{{ $ik1['bulan'] }}</td> --}}
                 {{-- <td>{{ $kumulatif }}</td>
+                <td>{{ $score }}</td>
+                <td>{{ $score }}</td>
+                <td>{{ $score }}</td>
+                <td>{{ $score }}</td>
+                <td>{{ $score }}</td>
+                <td>{{ $score }}</td>
+                <td>{{ $score }}</td>
+                <td>{{ $score }}</td>
+                <td>{{ $score }}</td>
+                <td>{{ $score }}</td>
+                <td>{{ $score }}</td>
                 <td>{{ $score }}</td> --}}
+
+                <td rowspan="3">
+                    <a href="" class="badge bg-warning">Edit</a>
+                    <form action="/iku/eval_index" method="post" class="d-inline">
+                        @method('delete')
+                        @csrf
+                        <button class="badge bg-danger" onclick="return confirm('Anda yakin ingin menghapus data?')">Delete</button>
+                    </form>
+                </td>
             </tr>
+            <tr>
+                <td>R</td>
+                <td>{{ $ik1['real'] }}</td>
+                <td>{{ $ik1['real'] }}</td>
+                <td>{{ $ik1['real'] }}</td>
+                <td>{{ $ik1['real'] }}</td>
+                <td>{{ $ik1['real'] }}</td>
+                <td>{{ $ik1['real'] }}</td>
+                <td>{{ $ik1['real'] }}</td>
+                <td>{{ $ik1['real'] }}</td>
+                <td>{{ $ik1['real'] }}</td>
+                <td>{{ $ik1['real'] }}</td>
+                <td>{{ $ik1['real'] }}</td>
+                <td>{{ $ik1['real'] }}</td>
+            </tr>
+            <tr>
+                <td>C</td>
+                <td>{{ $ik1['real'] }}</td>
+                <td>{{ $ik1['real'] }}</td>
+                <td>{{ $ik1['real'] }}</td>
+                <td>{{ $ik1['real'] }}</td>
+                <td>{{ $ik1['real'] }}</td>
+                <td>{{ $ik1['real'] }}</td>
+                <td>{{ $ik1['real'] }}</td>
+                <td>{{ $ik1['real'] }}</td>
+                <td>{{ $ik1['real'] }}</td>
+                <td>{{ $ik1['real'] }}</td>
+                <td>{{ $ik1['real'] }}</td>
+                <td>{{ $ik1['real'] }}</td>
+            </tr>
+
         @endforeach
             <tr>
                 <td colspan="5"><strong>Total Capaian</strong></td>

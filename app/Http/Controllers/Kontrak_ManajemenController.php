@@ -30,6 +30,15 @@ class Kontrak_ManajemenController extends Controller
         ]);
     }
 
+    public function edit()
+    {
+        $kontrak = Kontrak_Manajemen::all();
+        return view('kontrak_manajemen/edit', [
+            'title' => 'Edit Kontrak Manajemen',
+            'kontrak' => $kontrak,
+        ]);
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -50,6 +59,29 @@ class Kontrak_ManajemenController extends Controller
 
         $kontrak->save();
         return redirect('/kontrak_manajemen/index')->with('success', 'Data berhasil ditambahkan.');
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        $this->validate($request, [
+            'perspektif_id' => 'required'
+        ]);
+    
+        $kontrak = Kontrak_Manajemen::find($id);
+        $kontrak->tahun = $request->tahun;
+        $kontrak->perspektif_id = $request->perspektif_id;
+        $kontrak->kpi = $request->kpi;
+        $kontrak->target = $request->target;
+        $kontrak->satuan = $request->satuan;
+        $kontrak->polaritas = $request->polaritas;
+        $kontrak->bobot = $request->bobot;
+        $kontrak->pd = $request->pd;
+        $kontrak->hcfd = $request->hcfd;
+
+        $kontrak->update();
+    
+        return redirect('/kontrak_manajemen/index')->with('success', 'Kontrak Manajemen berhasil diubah.');
     }
 
 

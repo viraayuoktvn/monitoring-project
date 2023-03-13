@@ -13,16 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ikuv2', function (Blueprint $table) {
+        Schema::create('bulan', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('iku_id')
-            ->constrained('iku')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
-            $table->integer('tahun');
-            $table->string('bulan');
-            $table->string('real');
             $table->timestamps();
+            $table->string('bulan');
         });
     }
 
@@ -33,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ikuv2');
+        Schema::dropIfExists('bulan');
     }
 };

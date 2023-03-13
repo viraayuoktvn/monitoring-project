@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\IKUModel;
 use App\Models\PerspektifModel;
 use App\Models\UnitKerjaModel;
+use App\Models\BulanModel;
 use App\Models\IKUModelV2;
 
 class IKUController extends Controller
@@ -63,21 +64,25 @@ class IKUController extends Controller
     {
         $evaliku = IKUModelV2::all();
         $unitkerja = UnitKerjaModel::all();
+        $bulan = BulanModel::all();
 
         return view('iku/eval_index', [
             "title" => "IKU",
             "evaliku" => $evaliku,
-            "unitkerja" => $unitkerja
+            "unitkerja" => $unitkerja,
+            "bulan" => $bulan
         ]);
     }
 
     public function eval_create ()
     {
         $iku = IKUModel::all();
+        $bulan = BulanModel::all();
 
         return view('iku/eval_create', [
             "title" => "IKU | Add",
-            "iku" => $iku
+            "iku" => $iku,
+            "bulan" => $bulan
         ]);
     }
 
@@ -91,10 +96,15 @@ class IKUController extends Controller
 
         $evaliku->tahun = $request->tahun;
         $evaliku->iku_id = $request->iku_id;
-        $evaliku->bulan = $request->bulan;
-        $evaliku->real = $request->real;
+        $evaliku->bulan_id = $request->bulan_id;
+        $evaliku->real = $request->real::where('bulan', $evaliku->bulan_id)->first();
 
         $evaliku->save();
         return redirect('/iku/eval_index')->with('success', 'Data berhasil ditambahkan.');
+    }
+
+    public function eval_destroy()
+    {
+        
     }
 }

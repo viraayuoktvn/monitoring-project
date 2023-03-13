@@ -35,6 +35,7 @@
                 <th rowspan="2">Polaritas</th>
                 <th rowspan="2">Bobot</th>
                 <th colspan="2">Matrik Tanggung Jawab</th>
+                <th rowspan="2">Aksi</th>
             </tr>
             <tr>
                 <th>PD</th>
@@ -62,6 +63,15 @@
                 <td>{{ $dataArray[0]->bobot }}</td>
                 <td>{{ $dataArray[0]->pd }}</td>
                 <td>{{ $dataArray[0]->hcfd }}</td>
+
+                <td rowspan="3">
+                    <a href="/kontrak_manajemen/{id}" class="badge bg-warning">Edit</a>
+                    <form action="/iku/eval_index" method="post" class="d-inline">
+                        @method('delete')
+                        @csrf
+                        <button class="badge bg-danger" onclick="return confirm('Anda yakin ingin menghapus data?')">Delete</button>
+                    </form>
+                </td>
               </tr>
               @for ($i = 1; $i < $rowspan; $i++)
                 <tr>

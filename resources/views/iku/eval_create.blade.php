@@ -37,22 +37,11 @@
     
             <div class="mb-3">
                 <label class="label">Bulan</label>
-                <div class="mb-3">
-                    <select name="bulan" id="bulan">
-                        <option value="Januari">Januari</option>
-                        <option value="Februari">Februari</option>
-                        <option value="Maret">Maret</option>
-                        <option value="April">April</option>
-                        <option value="Mei">Mei</option>
-                        <option value="Juni">Juni</option>
-                        <option value="Juli">Juli</option>
-                        <option value="Agustus">Agustus</option>
-                        <option value="September">September</option>
-                        <option value="Oktober">Oktober</option>
-                        <option value="November">November</option>
-                        <option value="Desember">Desember</option>
-                    </select>
-                </div>                         
+                <select name="bulan_id" id="bulan_id">
+                    @foreach($bulan as $b)
+                    <option value="{{ $b->id }}">{{ $b['bulan'] }}</option>
+                    @endforeach
+                </select>                        
             </div>
 
             <div class="mb-3">
