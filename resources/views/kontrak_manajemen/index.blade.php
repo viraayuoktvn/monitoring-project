@@ -65,8 +65,13 @@
                 <td>{{ $dataArray[0]->hcfd }}</td>
 
                 <td rowspan="3">
-                    <a href="/kontrak_manajemen/{id}" class="badge bg-warning">Edit</a>
-                    <form action="/iku/eval_index" method="post" class="d-inline">
+                    <form action="/kontrak_manajemen/{id}/edit" method="post" class="d-inline">
+                        {{-- @method('delete') --}}
+                        @csrf
+                        <button class="badge bg-warning" onclick="return confirm('Anda yakin ingin mengubah data?')">Edit</button>
+                    </form>
+
+                    <form action="/kontrak_manajemen/index/{id}" method="post" class="d-inline">
                         @method('delete')
                         @csrf
                         <button class="badge bg-danger" onclick="return confirm('Anda yakin ingin menghapus data?')">Delete</button>

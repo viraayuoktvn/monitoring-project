@@ -84,7 +84,11 @@ class Kontrak_ManajemenController extends Controller
         return redirect('/kontrak_manajemen/index')->with('success', 'Kontrak Manajemen berhasil diubah.');
     }
 
-
+    public function destroy (Kontrak_Manajemen $kontrak)
+    { 
+        Kontrak_Manajemen::destroy($kontrak->id);
+        return redirect('/kontrak_manajemen/index')->with('success', 'Data berhasil dihapus!');
+    }
 
     public function eval_index()
     {
