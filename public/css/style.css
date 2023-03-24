@@ -250,6 +250,13 @@ thead {
     vertical-align: middle;
 }
 
+.badge {
+    height: 30px;
+    width: fit-content;
+    -webkit-text-fill-color: #fff;
+    vertical-align: middle;
+}
+
 .card-corporate {
     /* margin-left: auto;
     margin-right: auto; */

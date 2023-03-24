@@ -24,7 +24,7 @@
         </div>
     </div>
     
-    <table class="table text-center">
+    <table class="table table-bordered text-center">
         <thead>
             <tr>
                 <th rowspan="2">No.</th>

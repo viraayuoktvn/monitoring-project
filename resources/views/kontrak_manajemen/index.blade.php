@@ -35,6 +35,7 @@
                 <th rowspan="2">Polaritas</th>
                 <th rowspan="2">Bobot</th>
                 <th colspan="2">Matrik Tanggung Jawab</th>
+                <th rowspan="2">Aksi</th>
             </tr>
             <tr>
                 <th>PD</th>
@@ -62,6 +63,20 @@
                 <td>{{ $dataArray[0]->bobot }}</td>
                 <td>{{ $dataArray[0]->pd }}</td>
                 <td>{{ $dataArray[0]->hcfd }}</td>
+
+                <td rowspan="3">
+                    <form action="/kontrak_manajemen/{id}/edit" method="post" class="d-inline">
+                        {{-- @method('delete') --}}
+                        @csrf
+                        <button class="badge bg-warning" onclick="return confirm('Anda yakin ingin mengubah data?')">Edit</button>
+                    </form>
+
+                    <form action="/kontrak_manajemen/index/{id}" method="post" class="d-inline">
+                        @method('delete')
+                        @csrf
+                        <button class="badge bg-danger" onclick="return confirm('Anda yakin ingin menghapus data?')">Delete</button>
+                    </form>
+                </td>
               </tr>
               @for ($i = 1; $i < $rowspan; $i++)
                 <tr>

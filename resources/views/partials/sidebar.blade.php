@@ -23,7 +23,7 @@
                 <button class="btn-sidebar">
                     <div class="d-flex justify-between gap-2">
                         <div class="avatar-profile-sidebar px-auto py-auto">
-                            <img src="/public/images/avatar.svg" alt="photo" height="60" width="60">
+                            <img src="/images/avatar.svg" alt="photo" height="60" width="60">
                         </div>
                         <div class="text-profile">
                             <h4 class="h4-sidebar"><strong>Guest</strong></h4>
