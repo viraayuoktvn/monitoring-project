@@ -30,12 +30,16 @@ class Kontrak_ManajemenController extends Controller
         ]);
     }
 
-    public function edit()
+    public function edit($id)
     {
-        $kontrak = Kontrak_Manajemen::all();
+        // $kontrak = Kontrak_Manajemen::all();
+        $perspektif = PerspektifModel::all();
+        $kontrak = Kontrak_Manajemen::find($id);
+        // dd($perspektif);
         return view('kontrak_manajemen/edit', [
             'title' => 'Edit Kontrak Manajemen',
             'kontrak' => $kontrak,
+            'perspektif' => $perspektif
         ]);
     }
 
@@ -84,9 +88,9 @@ class Kontrak_ManajemenController extends Controller
         return redirect('/kontrak_manajemen/index')->with('success', 'Kontrak Manajemen berhasil diubah.');
     }
 
-    public function destroy (Kontrak_Manajemen $kontrak)
+    public function destroy($id)
     { 
-        Kontrak_Manajemen::destroy($kontrak->id);
+        Kontrak_Manajemen::destroy($id);
         return redirect('/kontrak_manajemen/index')->with('success', 'Data berhasil dihapus!');
     }
 

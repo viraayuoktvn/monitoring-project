@@ -35,8 +35,9 @@ Route::get('/perspektif', [PerspektifController::class, 'create']);
 Route::post('/perspektif/store', [PerspektifController::class, 'store']);
 
 Route::get('/kontrak_manajemen/index', [Kontrak_ManajemenController::class, 'index']);
-Route::delete('/kontrak_manajemen/index/{id}', [Kontrak_ManajemenController::class, 'destroy'])->name('kontrak_manajemen.destory');
-Route::get('/kontrak_manajemen/{id}/edit', [Kontrak_ManajemenController::class, 'edit'])->name('kontrak_manajemen.edit');
+// Route::delete('/kontrak_manajemen/index/{id}', [Kontrak_ManajemenController::class, 'destroy'])->name('kontrak_manajemen.destory');
+Route::post('/kontrak_manajemen/delete/{id}', [Kontrak_ManajemenController::class, 'destroy'])->name('kontrak_manajemen.destory');
+Route::get('/kontrak_manajemen/edit/{id}', [Kontrak_ManajemenController::class, 'edit'])->name('kontrak_manajemen.edit');
 Route::post('/kontrak_manajemen/update/{id}', [Kontrak_ManajemenController::class, 'update'])->name('kontrak_manajemen.update');
 Route::get('/kontrak_manajemen/create', [Kontrak_ManajemenController::class, 'create']);
 Route::post('/kontrak_manajemen/store', [Kontrak_ManajemenController::class, 'store']);

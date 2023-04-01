@@ -63,20 +63,24 @@
                 <td>{{ $dataArray[0]->bobot }}</td>
                 <td>{{ $dataArray[0]->pd }}</td>
                 <td>{{ $dataArray[0]->hcfd }}</td>
-
-                <td rowspan="3">
-                    <form action="/kontrak_manajemen/{id}/edit" method="post" class="d-inline">
+                <td>
+                    <form action="{{ route("kontrak_manajemen.edit", $dataArray[0]->id) }}" method="get" class="d-inline">
+                    {{-- <form action="/kontrak_manajemen/{id}/edit" method="post" class="d-inline"> --}}
                         {{-- @method('delete') --}}
                         @csrf
                         <button class="badge bg-warning" onclick="return confirm('Anda yakin ingin mengubah data?')">Edit</button>
                     </form>
 
-                    <form action="/kontrak_manajemen/index/{id}" method="post" class="d-inline">
-                        @method('delete')
+                    <form action="{{ route("kontrak_manajemen.destory", $dataArray[0]->id) }}" method="post" class="d-inline">
+                    {{-- <form action="/kontrak_manajemen/index/{id}" method="post" class="d-inline"> --}}
+                        {{-- @method('delete') --}}
                         @csrf
                         <button class="badge bg-danger" onclick="return confirm('Anda yakin ingin menghapus data?')">Delete</button>
                     </form>
                 </td>
+
+                {{-- <td rowspan="3"> --}}
+                
               </tr>
               @for ($i = 1; $i < $rowspan; $i++)
                 <tr>
@@ -88,6 +92,21 @@
                     <td>{{ $dataArray[$i]->bobot }}</td>
                     <td>{{ $dataArray[$i]->pd }}</td>
                     <td>{{ $dataArray[$i]->hcfd }}</td>
+                    <td>
+                        <form action="{{ route("kontrak_manajemen.edit", $dataArray[$i]->id) }}" method="get" class="d-inline">
+                        {{-- <form action="/kontrak_manajemen/{id}/edit" method="post" class="d-inline"> --}}
+                            {{-- @method('delete') --}}
+                            @csrf
+                            <button class="badge bg-warning" onclick="return confirm('Anda yakin ingin mengubah data?')">Edit</button>
+                        </form>
+    
+                        <form action="{{ route("kontrak_manajemen.destory", $dataArray[$i]->id) }}" method="post" class="d-inline">
+                        {{-- <form action="/kontrak_manajemen/index/{id}" method="post" class="d-inline"> --}}
+                            {{-- @method('delete') --}}
+                            @csrf
+                            <button class="badge bg-danger" onclick="return confirm('Anda yakin ingin menghapus data?')">Delete</button>
+                        </form>
+                    </td>
                 </tr>
               @endfor
             @endforeach
