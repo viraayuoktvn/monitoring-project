@@ -22,20 +22,20 @@ class Kontrak_ManajemenController extends Controller
 
     public function create()
     {
+        $kontrak = Kontrak_Manajemen::all();
         $perspektif = PerspektifModel::all();
 
         return view('kontrak_manajemen/create', [
             "title" => "Kontrak Manajemen | Add",
-            "perspektif" => $perspektif
+            "perspektif" => $perspektif,
+            'kontrak' => $kontrak
         ]);
     }
 
     public function edit($id)
     {
-        // $kontrak = Kontrak_Manajemen::all();
         $perspektif = PerspektifModel::all();
         $kontrak = Kontrak_Manajemen::find($id);
-        // dd($perspektif);
         return view('kontrak_manajemen/edit', [
             'title' => 'Edit Kontrak Manajemen',
             'kontrak' => $kontrak,
@@ -73,6 +73,7 @@ class Kontrak_ManajemenController extends Controller
         ]);
     
         $kontrak = Kontrak_Manajemen::find($id);
+        
         $kontrak->tahun = $request->tahun;
         $kontrak->perspektif_id = $request->perspektif_id;
         $kontrak->kpi = $request->kpi;
@@ -107,10 +108,12 @@ class Kontrak_ManajemenController extends Controller
     public function eval_create()
     {
         $kontrak = Kontrak_Manajemen::all();
+        $evalkontrak = Kontrak_ManajemenV2::all();
 
         return view('kontrak_manajemen/eval_create', [
-            "title" => "Evaluasi Kontrak Manajemen | Add",
-            "kontrak" => $kontrak
+            'title' => "Evaluasi Kontrak Manajemen | Add",
+            'evalkontrak' => $evalkontrak,
+            'kontrak' => $kontrak
         ]);
     }
 
@@ -130,4 +133,40 @@ class Kontrak_ManajemenController extends Controller
         return redirect('/kontrak_manajemen/eval_index')->with('success', 'Data berhasil ditambahkan.');
     }
 
+    public function eval_edit($id)
+    {
+        $kontrak = Kontrak_Manajemen::all();
+        $perspektif = PerspektifModel::all();
+        $evalkontrak = Kontrak_ManajemenV2::find($id);
+        return view('kontrak_manajemen/eval_edit', [
+            'title' => 'Edit Evaluasi Kontrak Manajemen',
+            'evalkontrak' => $evalkontrak,
+            'perspektif' => $perspektif,
+            'kontrak' => $kontrak
+        ]);
+    }
+
+    public function eval_update(Request $request, $id)
+    {
+
+        $this->validate($request, [
+            'kontrakmanajemen_id' => 'required'
+        ]);
+
+        $evalkontrak = Kontrak_ManajemenV2::find($id);
+
+        $evalkontrak->tahun = $request->tahun;
+        $evalkontrak->kontrakmanajemen_id = $request->kontrakmanajemen_id;
+        $evalkontrak->real = $request->real;
+
+        $evalkontrak->update();
+    
+        return redirect('/kontrak_manajemen/eval_index')->with('success', 'Evaluasi Kontrak Manajemen berhasil diubah.');
+    }
+
+    public function eval_destroy($id)
+    { 
+        Kontrak_ManajemenV2::destroy($id);
+        return redirect('/kontrak_manajemen/eval_index')->with('success', 'Data berhasil dihapus!');
+    }
 }

@@ -34,6 +34,7 @@
                 <th rowspan="2">Satuan</th>
                 <th colspan="3">Akumulasi per Tahun</th>
                 <th rowspan="2">Score (%)</th>
+                <th rowspan="2">Aksi</th>
             </tr>
             <tr>
                 <th>Target</th>
@@ -59,6 +60,18 @@
                     <td>{{ $ek["real"] }}</td>
                     <td>{{ $capaian }}</td>
                     <td>{{ $score }}</td>
+
+                    <td>
+                        <form action="{{ route("kontrak_manajemen.eval_edit", $ek->id) }}" method="get" class="d-inline">
+                            @csrf
+                            <button class="badge bg-warning" onclick="return confirm('Anda yakin ingin mengubah data?')">Edit</button>
+                        </form>
+    
+                        <form action="{{ route("kontrak_manajemen.eval_destroy", $ek->id) }}" method="post" class="d-inline">
+                            @csrf
+                            <button class="badge bg-danger" onclick="return confirm('Anda yakin ingin menghapus data?')">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 <?php $total += $score ?>
             @endforeach

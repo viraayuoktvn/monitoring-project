@@ -38,6 +38,7 @@
                 <th rowspan="2">Bobot</th>
                 <th rowspan="2">Program Kerja</th>
                 <th rowspan="2">Penanggung Jawab</th>
+                <th rowspan="2">Aksi</th>
             </tr>
             <tr>
                 <th>IKU Atasan</th>
@@ -66,10 +67,21 @@
                 <td>{{ $dataArray[0]->bobot }}</td>
                 <td>{{ $dataArray[0]->programkerja }}</td>
                 <td>{{ $dataArray[0]->pj }}</td>
+
+                <td>
+                    <form action="{{ route("iku.edit", $dataArray[0]->id) }}" method="get" class="d-inline">
+                        @csrf
+                        <button class="badge bg-warning" onclick="return confirm('Anda yakin ingin mengubah data?')">Edit</button>
+                    </form>
+
+                    <form action="{{ route("iku.destroy", $dataArray[0]->id) }}" method="post" class="d-inline">
+                        @csrf
+                        <button class="badge bg-danger" onclick="return confirm('Anda yakin ingin menghapus data?')">Delete</button>
+                    </form>
+                </td>
               </tr>
               @for ($i = 1; $i < $rowspan; $i++)
                 <tr>
-                    {{-- <th scope = "row"><?= $j++; ?> --}}
                     <td>{{ $dataArray[$i]->ikuatasan }}</td>
                     <td>{{ $dataArray[$i]->target_ka }}</td>
                     <td>{{ $dataArray[$i]->iku }}</td>
@@ -79,6 +91,18 @@
                     <td>{{ $dataArray[$i]->bobot }}</td>
                     <td>{{ $dataArray[$i]->programkerja }}</td>
                     <td>{{ $dataArray[$i]->pj }}</td>
+
+                    <td>
+                        <form action="{{ route("iku.edit", $dataArray[$i]->id) }}" method="get" class="d-inline">
+                            @csrf
+                            <button class="badge bg-warning" onclick="return confirm('Anda yakin ingin mengubah data?')">Edit</button>
+                        </form>
+    
+                        <form action="{{ route("iku.destroy", $dataArray[$i]->id) }}" method="post" class="d-inline">
+                            @csrf
+                            <button class="badge bg-danger" onclick="return confirm('Anda yakin ingin menghapus data?')">Delete</button>
+                        </form>
+                    </td>
                 </tr>
               @endfor
             @endforeach

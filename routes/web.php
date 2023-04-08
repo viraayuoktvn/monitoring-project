@@ -35,22 +35,30 @@ Route::get('/perspektif', [PerspektifController::class, 'create']);
 Route::post('/perspektif/store', [PerspektifController::class, 'store']);
 
 Route::get('/kontrak_manajemen/index', [Kontrak_ManajemenController::class, 'index']);
-// Route::delete('/kontrak_manajemen/index/{id}', [Kontrak_ManajemenController::class, 'destroy'])->name('kontrak_manajemen.destory');
-Route::post('/kontrak_manajemen/delete/{id}', [Kontrak_ManajemenController::class, 'destroy'])->name('kontrak_manajemen.destory');
+Route::post('/kontrak_manajemen/delete/{id}', [Kontrak_ManajemenController::class, 'destroy'])->name('kontrak_manajemen.destroy');
 Route::get('/kontrak_manajemen/edit/{id}', [Kontrak_ManajemenController::class, 'edit'])->name('kontrak_manajemen.edit');
 Route::post('/kontrak_manajemen/update/{id}', [Kontrak_ManajemenController::class, 'update'])->name('kontrak_manajemen.update');
 Route::get('/kontrak_manajemen/create', [Kontrak_ManajemenController::class, 'create']);
 Route::post('/kontrak_manajemen/store', [Kontrak_ManajemenController::class, 'store']);
 
 Route::get('/kontrak_manajemen/eval_index', [Kontrak_ManajemenController::class, 'eval_index']);
+Route::post('/kontrak_manajemen/eval_delete/{id}', [Kontrak_ManajemenController::class, 'eval_destroy'])->name('kontrak_manajemen.eval_destroy');
+Route::get('/kontrak_manajemen/eval_edit/{id}', [Kontrak_ManajemenController::class, 'eval_edit'])->name('kontrak_manajemen.eval_edit');
+Route::post('/kontrak_manajemen/eval_update/{id}', [Kontrak_ManajemenController::class, 'eval_update'])->name('kontrak_manajemen.eval_update');
 Route::get('/kontrak_manajemen/eval_create', [Kontrak_ManajemenController::class, 'eval_create']);
 Route::post('/kontrak_manajemen/eval_store', [Kontrak_ManajemenController::class, 'eval_store']);
 
 Route::get('/iku/index', [IKUController::class, 'index']);
+Route::post('/iku/delete/{id}', [IKUController::class, 'destroy'])->name('iku.destroy');
+Route::get('/iku/edit/{id}', [IKUController::class, 'edit'])->name('iku.edit');
+Route::post('/iku/update/{id}', [IKUController::class, 'update'])->name('iku.update');
 Route::get('/iku/create', [IKUController::class, 'create']);
 Route::post('/iku/store', [IKUController::class, 'store']);
 
 Route::get('/iku/eval_index', [IKUController::class, 'eval_index']);
+Route::post('/iku/eval_delete/{id}', [IKUController::class, 'eval_destroy'])->name('iku.eval_destroy');
+Route::get('/iku/eval_edit/{id}', [IKUController::class, 'eval_edit'])->name('iku.eval_edit');
+Route::post('/iku/eval_update/{id}', [IKUController::class, 'eval_update'])->name('iku.eval_update');
 Route::get('/iku/eval_create', [IKUController::class, 'eval_create']);
 Route::post('/iku/eval_store', [IKUController::class, 'eval_store']);
 

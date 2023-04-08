@@ -35,6 +35,44 @@ class IKUController extends Controller
         ]);
     }
 
+    public function edit($id)
+    {
+        $unitkerja = UnitKerjaModel::all();
+        $perspektif = PerspektifModel::all();
+        $iku = IKUModel::find($id);
+        return view('iku/edit', [
+            'title' => 'Edit IKU',
+            'iku' => $iku,
+            'perspektif' => $perspektif,
+            'unitkerja' => $unitkerja
+        ]);
+    }
+
+    public function update (Request $request, $id)
+    {
+        $this->validate($request, [
+            'perspektif_id' => 'required'
+        ]);
+
+        $iku = IKUModel::find($id);
+
+        $iku->tahun = $request->tahun;
+        $iku->perspektif_id = $request->perspektif_id;
+        $iku->unitkerja_id = $request->unitkerja_id;
+        $iku->ikuatasan = $request->ikuatasan;
+        $iku->target_ka = $request->target_ka;
+        $iku->iku = $request->iku;
+        $iku->target_iku = $request->target_iku;
+        $iku->satuan = $request->satuan;
+        $iku->polaritas = $request->polaritas;
+        $iku->bobot = $request->bobot;
+        $iku->programkerja = $request->programkerja;
+        $iku->pj = $request->pj;
+
+        $iku->update();
+        return redirect('/iku/index')->with('success', 'Data berhasil diubah.');
+    }
+
     public function store (Request $request)
     {
         $request->validate([
@@ -58,6 +96,12 @@ class IKUController extends Controller
 
         $iku->save();
         return redirect('/iku/index')->with('success', 'Data berhasil ditambahkan.');
+    }
+
+    public function destroy($id)
+    { 
+        IKUModel::destroy($id);
+        return redirect('/iku/index')->with('success', 'Data berhasil dihapus!');
     }
 
     public function eval_index ()
@@ -103,8 +147,42 @@ class IKUController extends Controller
         return redirect('/iku/eval_index')->with('success', 'Data berhasil ditambahkan.');
     }
 
-    public function eval_destroy()
+    public function eval_edit($id)
     {
+        $unitkerja = UnitKerjaModel::all();
+        $perspektif = PerspektifModel::all();
+        $iku = IKUModel::find($id);
         
+        return view('iku/eval_edit', [
+            'title' => 'Edit Evaluasi IKU',
+            'iku' => $iku,
+            'perspektif' => $perspektif,
+            'unitkerja' => $unitkerja
+        ]);
+    }
+
+    public function eval_update (Request $request, $id)
+    {
+        $this->validate($request, [
+            'perspektif_id' => 'required'
+        ]);
+
+        $iku = IKUModel::find($id);
+
+        $iku->tahun = $request->tahun;
+        $iku->perspektif_id = $request->perspektif_id;
+        $iku->unitkerja_id = $request->unitkerja_id;
+        $iku->ikuatasan = $request->ikuatasan;
+        $iku->target_ka = $request->target_ka;
+        $iku->iku = $request->iku;
+        $iku->target_iku = $request->target_iku;
+        $iku->satuan = $request->satuan;
+        $iku->polaritas = $request->polaritas;
+        $iku->bobot = $request->bobot;
+        $iku->programkerja = $request->programkerja;
+        $iku->pj = $request->pj;
+
+        $iku->update();
+        return redirect('/iku/index')->with('success', 'Data berhasil diubah.');
     }
 }
