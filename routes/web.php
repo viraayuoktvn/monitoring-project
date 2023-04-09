@@ -31,7 +31,11 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/perspektif', [PerspektifController::class, 'create']);
+Route::get('/perspektif', [PerspektifController::class, 'index']);
+Route::post('/perspektif/delete/{id}', [PerspektifController::class, 'destroy'])->name('perspektif.destroy');
+Route::get('/perspektif/edit/{id}', [PerspektifController::class, 'edit'])->name('perspektif.edit');
+Route::post('/perspektif/update/{id}', [PerspektifController::class, 'update'])->name('perspektif.update');
+Route::get('/perspektif/create', [PerspektifController::class, 'create']);
 Route::post('/perspektif/store', [PerspektifController::class, 'store']);
 
 Route::get('/kontrak_manajemen/index', [Kontrak_ManajemenController::class, 'index']);
@@ -74,8 +78,6 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/user', [UserController::class, 'index']);
 Route::get('/user/{id}', [UserController::class, 'edit'])->name('user.edit');
 Route::post('/user/update/{id}', [UserController::class, 'update'])->name('user.update');
-
-// Route::get('/user/edit', 'UserController@edit')->name('/user/edit');
 
 Route::get('/dbconn', function () {
     return view('dbconn');

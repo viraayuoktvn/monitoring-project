@@ -8,8 +8,12 @@
     <div class="row justify-between">
         <div class="col">
             <select name="tahun" id="tahun" placeholder="Tahun" class="dropdown-tahun">
-                @foreach($evaliku as $ik)
-                <option value="{{ $ik['tahun'] }}">{{ $ik['tahun'] }}</option>
+                @php
+                    $groupedData = $evaliku->groupBy('tahun');
+                @endphp
+
+                @foreach ($groupedData as $groupedValue => $dataArray)
+                    <option value="{{ $groupedValue }}">{{ $groupedValue }}</option>
                 @endforeach
             </select>
         </div>

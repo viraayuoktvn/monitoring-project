@@ -14,8 +14,12 @@
     <div class="row justify-between">
         <div class="col">
             <select name="tahun" id="tahun" placeholder="Tahun" class="dropdown-tahun">
-                @foreach($evalkontrak as $ek)
-                <option value="{{ $ek['tahun'] }}">{{ $ek['tahun'] }}</option>
+                @php
+                    $groupedData = $evalkontrak->groupBy('tahun');
+                @endphp
+
+                @foreach ($groupedData as $groupedValue => $dataArray)
+                    <option value="{{ $groupedValue }}">{{ $groupedValue }}</option>
                 @endforeach
             </select>
         </div>

@@ -18,7 +18,7 @@
         
         <div class="edit-profile d-flex justify-between gap-3">
             <div class="avatar-profile">
-                <img src="{{ asset('storage/images/'.$user->photo) }}" alt="{{ $user->name }}" height="200" width="200">
+                <img src="{{ asset('storage/images/'.$user->photo) }}" alt="{{ $user->name }}">
             </div>
 
             <div class="mt-5">

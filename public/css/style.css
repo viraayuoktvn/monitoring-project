@@ -109,9 +109,10 @@ a {
 }
 
 .avatar-profile img {
-    width: 100%;
-    height: auto;
+    width: 200px;
+    height: 200px;
     display: block;
+    object-fit: cover;
 }
 
 .form-control-photo {
