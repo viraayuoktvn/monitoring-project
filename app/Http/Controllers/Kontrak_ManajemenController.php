@@ -6,13 +6,19 @@ use Illuminate\Http\Request;
 use App\Models\Kontrak_Manajemen;
 use App\Models\PerspektifModel;
 use App\Models\Kontrak_ManajemenV2;
+use Illuminate\Support\Facades\DB;
+use Symfony\Component\VarDumper\Cloner\Data;
 
 
 class Kontrak_ManajemenController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $kontrak = Kontrak_Manajemen::all();
+        // $kontrak = Kontrak_Manajemen::all();
+
+        $kontrak = Kontrak_Manajemen::where($request->tahun, function ($query) use ($request) {
+            return $query->whereYear($request->tahun);
+        });
         return view('kontrak_manajemen/index', [
             "title" => "Kontrak Manajemen",
             "kontrak" => $kontrak,
@@ -94,6 +100,28 @@ class Kontrak_ManajemenController extends Controller
         Kontrak_Manajemen::destroy($id);
         return redirect('/kontrak_manajemen/index')->with('success', 'Data berhasil dihapus!');
     }
+
+    // public function filterByYear (Request $request)
+    // {
+    //     $tahun = $request->input('tahun');
+    //     // $data = Data::where('tahun', $tahun)->get();
+    //     return view ('kontrak_manajemen.index', compact('data'));
+    // }
+
+    // public function filterByYear(Request $request){
+    //     $kontrak = Kontrak_Manajemen::all();
+    //     $tahun = $request->input('tahun');
+
+    //     $data = DB::table('kontrakmanajemen')
+    //                 ->whereYear('tahun', $tahun)
+    //                 ->get();
+        
+    //     return view('kontrak_manajemen/index', [
+    //         'title' => 'Kontrak Manajemen',
+    //         'data' => $data,
+    //         'kontrak' => $kontrak
+    //     ]);
+    // }
 
     public function eval_index()
     {

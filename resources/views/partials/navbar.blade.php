@@ -15,21 +15,21 @@
 
         @auth
             <li class="d-flex justify-between gap-0">
-                <input
+                {{-- <input
                     type="search"
                     class="form-control mx-1 my-2"
                     placeholder="Search..."
                     aria-label="Search"
                     aria-describedby="search-addon"
-                />
+                /> --}}
                 <div class="d-flex">
-                    <button type="submit" class="btnnavbar" href="#">
+                    <button type="submit" class="btnnavbar" href="#">Settings
                         <img src="/images/settings.png" alt="settings" height="25"/>                    
                     </button>
                     
                     <form action="/logout" method="post">
                         @csrf
-                        <button type="submit" class="btnnavbar mt-3">
+                        <button type="submit" class="btnnavbar">Log Out
                             <img src="/images/logout.png" alt="logout" height="25"/>
                         </button>
                     </form>

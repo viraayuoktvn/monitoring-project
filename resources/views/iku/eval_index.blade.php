@@ -8,6 +8,8 @@
     <div class="row justify-between">
         <div class="col">
             <select name="tahun" id="tahun" placeholder="Tahun" class="dropdown-tahun">
+            <option value="">Tahun</option>
+
                 @php
                     $groupedData = $evaliku->groupBy('tahun');
                 @endphp
@@ -19,6 +21,8 @@
         </div>
         <div class="col">
             <select name="unitkerja" id="unitkerja" placeholder="Unit Kerja" class="dropdown-tahun">
+            <option value="">Unit Kerja</option>
+
                 @foreach($unitkerja as $uk)
                 <option value="{{ $uk->id }}">{{ $uk['name_dept'] }}</option>
                 @endforeach

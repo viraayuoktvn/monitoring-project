@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -32,15 +33,21 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'email' => 'required|email|unique:users,email,'.$id,
-            'photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
     
-        $path = $photo->store('public/images');
+        // $path = $photo->store('public/images');
 
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->photo = $photo->hashName();
+
+        if ($request->hasFile('photo')) {
+            $user->updateProfilePhoto($request->file('photo'));
+        } else {
+            $user->photo = $request->old_file_name;
+            // $user->save();
+        }
 
         $user->update();
     

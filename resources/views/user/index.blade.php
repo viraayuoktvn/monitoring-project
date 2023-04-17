@@ -16,7 +16,7 @@
     <form class="py-3">
         @csrf
         
-        <div class="edit-profile d-flex justify-between gap-3">
+        <div class="edit-profile">
             <div class="avatar-profile">
                 <img src="{{ asset('storage/images/'.$user->photo) }}" alt="{{ $user->name }}">
             </div>
@@ -31,9 +31,16 @@
                 </div>
             </div>
         </div>
-
-
-        <div class="mb-3 mt-5">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="mb-3 ">
             <a href="/user/{id}" class="btn mb-3">Edit Profile</a>
         </div>
     </form>

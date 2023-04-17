@@ -14,6 +14,8 @@
     <div class="row justify-between">
         <div class="col">
             <select name="tahun" id="tahun" placeholder="Tahun" class="dropdown-tahun">
+            <option value="">Tahun</option>
+
                 @php
                     $groupedData = $evalkontrak->groupBy('tahun');
                 @endphp

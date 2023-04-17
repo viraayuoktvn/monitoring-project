@@ -13,7 +13,9 @@
     <hr>
     <div class="row justify-between">
         <div class="col">
-            <select name="name" id="name" placeholder="Badan Pembuat" class="dropdown-tahun">
+            <select name="filter-pembuat" id="filter-pembuat" placeholder="Badan Pembuat" class="dropdown-tahun">
+            <option value="">Badan Pembuat</option>
+
                 @php
                     $groupedData = $perspektif->groupBy('name_perspektif');
                 @endphp
