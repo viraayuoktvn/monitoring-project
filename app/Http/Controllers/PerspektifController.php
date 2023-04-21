@@ -16,6 +16,18 @@ class PerspektifController extends Controller
            
         ]);
     }
+
+    public function filter(Request $request)
+    {
+        $name_perspektif = $request->name_perspektif;
+        $perspektif = PerspektifModel::where('name_perspektif', $name_perspektif)->get();
+    
+        return view('perspektif/index', [
+            "title" => "Perspektif",
+            "perspektif" => $perspektif
+        ]);
+    } 
+
     public function create ()
     {
         return view('perspektif.create', [

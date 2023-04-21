@@ -23,7 +23,7 @@
                     aria-describedby="search-addon"
                 /> --}}
                 <div class="d-flex">
-                    <button type="submit" class="btnnavbar" href="#">Settings
+                    <button type="submit" class="btnnavbar" href="#">*Settings
                         <img src="/images/settings.png" alt="settings" height="25"/>                    
                     </button>
                     

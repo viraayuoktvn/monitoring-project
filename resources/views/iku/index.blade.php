@@ -6,30 +6,36 @@
     <h1 class="mt-4"> INDIKATOR KINERJA UTAMA </h1>
     <hr>
     <div class="row justify-between">
-        <div class="col">
-            <select name="tahun" id="tahun" placeholder="Tahun" class="dropdown-tahun">
-            <option value="">Tahun</option>
+        <form action="{{ route('iku.filter') }}" method="POST">
+            @csrf
+            <div class="col">
+                <div class="form-group d-flex w-40">
+                    <select name="tahun" id="tahun" placeholder="Tahun" class="dropdown-tahun">
+                        <option value="">Tahun</option>
+                        @php $groupedData = $iku->groupBy('tahun'); @endphp
+                        @foreach ($groupedData as $groupedValue => $dataArray)
+                            <option value="{{ $groupedValue }}">{{ $groupedValue }}</option>
+                        @endforeach
+                    </select>
 
-                @php
-                    $groupedData = $iku->groupBy('tahun');
-                @endphp
+                    <select name="unitkerja_id" id="unitkerja_id" placeholder="Unit Kerja" class="dropdown-tahun">
+                        <option value="">*Unit Kerja</option>
+                        @php $groupedData = $unitkerja->groupBy('name_dept'); @endphp
+                        @foreach ($groupedData as $groupedValue => $dataArray)
+                            <option value="{{ $groupedValue }}">{{ $groupedValue }}</option>
+                        @endforeach
+                    </select>
 
-                @foreach ($groupedData as $groupedValue => $dataArray)
-                    <option value="{{ $groupedValue }}">{{ $groupedValue }}</option>
-                @endforeach
-            </select>
-        </div>
+                    <button type="submit" class="btn mt-1 h-25">Filter</button>
+                    <a href="{{ route('iku.index') }}" class="btn mt-1 h-25 w-50">Reset Filter</a>
+                </div>
+            </div>
+            <div class="col d-flex justify-end">
+            </div>
+        </form>
+        
         <div class="col">
-            <select name="unitkerja" id="unitkerja" placeholder="Unit Kerja" class="dropdown-tahun">
-            <option value="">Unit Kerja</option>
-
-                @foreach($unitkerja as $uk)
-                <option value="{{ $uk->id }}">{{ $uk['name_dept'] }}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="col">
-            <a href="/iku/create" class="btn mb-3">Add New</a>
+            <a href="/iku/create" class="btn mb-2 mt-2">Add New</a>
         </div>
     </div>
     

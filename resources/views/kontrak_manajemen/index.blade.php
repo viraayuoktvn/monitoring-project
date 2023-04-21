@@ -13,18 +13,21 @@
     <hr>
     <div class="row justify-between">
         <div class="col">
-            <select name="tahun" id="tahun" placeholder="Tahun" class="dropdown-tahun">
-            <option value="">Tahun</option>
+            <form action="{{ route('kontrak_manajemen.filter') }}" method="POST">
+                @csrf
+                <div class="form-group d-flex">
+                    <select name="tahun" id="tahun" placeholder="Tahun" class="dropdown-tahun">
+                        <option value="">Tahun</option>
+                        @php $groupedData = $kontrak->groupBy('tahun'); @endphp
+                        @foreach ($groupedData as $groupedValue => $dataArray)
+                            <option value="{{ $groupedValue }}">{{ $groupedValue }}</option>
+                        @endforeach
+                    </select>
 
-            @php
-                $groupedData = $kontrak->groupBy('tahun');
-            @endphp
-
-            @foreach ($groupedData as $groupedValue => $dataArray)
-                <option value="{{ $groupedValue }}">{{ $groupedValue }}</option>
-            @endforeach
-
-            </select>
+                    <button type="submit" class="btn mt-1 h-25">Filter</button>
+                    <a href="{{ route('kontrak_manajemen.index') }}" class="btn mt-1 h-25 w-50">Reset Filter</a>
+                </div>
+            </form>
         </div>
         <div class="col">
             <a href="/kontrak_manajemen/create" class="btn mb-3">Add New</a>

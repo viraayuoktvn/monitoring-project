@@ -19,4 +19,9 @@ class IKUModel extends Model
     {
         return $this->hasMany(IKUModelV2::class);
     }
+
+    public function unitKerja()
+    {
+        return $this->belongsTo(UnitKerja::class);
+    }
 }

@@ -9,7 +9,6 @@
         <div class="col">
             <select name="tahun" id="tahun" placeholder="Tahun" class="dropdown-tahun">
             <option value="">Tahun</option>
-
                 @php
                     $groupedData = $evaliku->groupBy('tahun');
                 @endphp

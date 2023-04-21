@@ -31,28 +31,32 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/perspektif', [PerspektifController::class, 'index']);
+Route::get('/perspektif', [PerspektifController::class, 'index'])->name('perspektif.index');
+Route::post('/perspektif/index', [PerspektifController::class, 'filter'])->name('perspektif.filter');
 Route::post('/perspektif/delete/{id}', [PerspektifController::class, 'destroy'])->name('perspektif.destroy');
 Route::get('/perspektif/edit/{id}', [PerspektifController::class, 'edit'])->name('perspektif.edit');
 Route::post('/perspektif/update/{id}', [PerspektifController::class, 'update'])->name('perspektif.update');
 Route::get('/perspektif/create', [PerspektifController::class, 'create']);
 Route::post('/perspektif/store', [PerspektifController::class, 'store']);
 
-Route::get('/kontrak_manajemen/index', [Kontrak_ManajemenController::class, 'index']);
+Route::get('/kontrak_manajemen/index', [Kontrak_ManajemenController::class, 'index'])->name('kontrak_manajemen.index');
+Route::post('/kontrak_manajemen/index', [Kontrak_ManajemenController::class, 'filter'])->name('kontrak_manajemen.filter');
 Route::post('/kontrak_manajemen/delete/{id}', [Kontrak_ManajemenController::class, 'destroy'])->name('kontrak_manajemen.destroy');
 Route::get('/kontrak_manajemen/edit/{id}', [Kontrak_ManajemenController::class, 'edit'])->name('kontrak_manajemen.edit');
 Route::post('/kontrak_manajemen/update/{id}', [Kontrak_ManajemenController::class, 'update'])->name('kontrak_manajemen.update');
 Route::get('/kontrak_manajemen/create', [Kontrak_ManajemenController::class, 'create']);
 Route::post('/kontrak_manajemen/store', [Kontrak_ManajemenController::class, 'store']);
 
-Route::get('/kontrak_manajemen/eval_index', [Kontrak_ManajemenController::class, 'eval_index']);
+Route::get('/kontrak_manajemen/eval_index', [Kontrak_ManajemenController::class, 'eval_index'])->name('kontrak_manajemen.eval_index');
+Route::post('/kontrak_manajemen/eval_index', [Kontrak_ManajemenController::class, 'eval_filter'])->name('kontrak_manajemen.eval_filter');
 Route::post('/kontrak_manajemen/eval_delete/{id}', [Kontrak_ManajemenController::class, 'eval_destroy'])->name('kontrak_manajemen.eval_destroy');
 Route::get('/kontrak_manajemen/eval_edit/{id}', [Kontrak_ManajemenController::class, 'eval_edit'])->name('kontrak_manajemen.eval_edit');
 Route::post('/kontrak_manajemen/eval_update/{id}', [Kontrak_ManajemenController::class, 'eval_update'])->name('kontrak_manajemen.eval_update');
 Route::get('/kontrak_manajemen/eval_create', [Kontrak_ManajemenController::class, 'eval_create']);
 Route::post('/kontrak_manajemen/eval_store', [Kontrak_ManajemenController::class, 'eval_store']);
 
-Route::get('/iku/index', [IKUController::class, 'index']);
+Route::get('/iku/index', [IKUController::class, 'index'])->name('iku.index');
+Route::post('/iku/index', [IKUController::class, 'filter'])->name('iku.filter');
 Route::post('/iku/delete/{id}', [IKUController::class, 'destroy'])->name('iku.destroy');
 Route::get('/iku/edit/{id}', [IKUController::class, 'edit'])->name('iku.edit');
 Route::post('/iku/update/{id}', [IKUController::class, 'update'])->name('iku.update');

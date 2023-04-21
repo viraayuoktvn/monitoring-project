@@ -12,19 +12,26 @@ use Symfony\Component\VarDumper\Cloner\Data;
 
 class Kontrak_ManajemenController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        // $kontrak = Kontrak_Manajemen::all();
+        $kontrak = Kontrak_Manajemen::all();
 
-        $kontrak = Kontrak_Manajemen::where($request->tahun, function ($query) use ($request) {
-            return $query->whereYear($request->tahun);
-        });
         return view('kontrak_manajemen/index', [
             "title" => "Kontrak Manajemen",
-            "kontrak" => $kontrak,
-           
+            "kontrak" => $kontrak
         ]);
     }
+
+    public function filter(Request $request)
+    {
+        $tahun = $request->tahun;
+        $kontrak = Kontrak_Manajemen::where('tahun', $tahun)->get();
+    
+        return view('kontrak_manajemen/index', [
+            "title" => "Kontrak Manajemen",
+            "kontrak" => $kontrak
+        ]);
+    } 
 
     public function create()
     {
@@ -99,34 +106,23 @@ class Kontrak_ManajemenController extends Controller
     { 
         Kontrak_Manajemen::destroy($id);
         return redirect('/kontrak_manajemen/index')->with('success', 'Data berhasil dihapus!');
-    }
-
-    // public function filterByYear (Request $request)
-    // {
-    //     $tahun = $request->input('tahun');
-    //     // $data = Data::where('tahun', $tahun)->get();
-    //     return view ('kontrak_manajemen.index', compact('data'));
-    // }
-
-    // public function filterByYear(Request $request){
-    //     $kontrak = Kontrak_Manajemen::all();
-    //     $tahun = $request->input('tahun');
-
-    //     $data = DB::table('kontrakmanajemen')
-    //                 ->whereYear('tahun', $tahun)
-    //                 ->get();
-        
-    //     return view('kontrak_manajemen/index', [
-    //         'title' => 'Kontrak Manajemen',
-    //         'data' => $data,
-    //         'kontrak' => $kontrak
-    //     ]);
-    // }
+    }              
 
     public function eval_index()
     {
         $evalkontrak = Kontrak_ManajemenV2::all();
         
+        return view('kontrak_manajemen/eval_index', [
+            "title" => "Evaluasi Kontrak Manajemen",
+            "evalkontrak" => $evalkontrak
+        ]);
+    }
+
+    public function eval_filter(Request $request)
+    {
+        $tahun = $request->tahun;
+        $evalkontrak = Kontrak_ManajemenV2::where('tahun', $tahun)->get();
+    
         return view('kontrak_manajemen/eval_index', [
             "title" => "Evaluasi Kontrak Manajemen",
             "evalkontrak" => $evalkontrak

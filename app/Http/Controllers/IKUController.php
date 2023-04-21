@@ -8,6 +8,7 @@ use App\Models\PerspektifModel;
 use App\Models\UnitKerjaModel;
 use App\Models\BulanModel;
 use App\Models\IKUModelV2;
+use Illuminate\Support\Facades\DB;
 
 class IKUController extends Controller
 {
@@ -17,6 +18,34 @@ class IKUController extends Controller
         $unitkerja = UnitKerjaModel::all();
 
         return view('iku/index', [
+            "title" => "IKU",
+            "iku" => $iku,
+            "unitkerja" => $unitkerja
+        ]);
+    }
+
+    public function filter(Request $request)
+    {   
+        $unitkerja = UnitKerjaModel::all();
+        $iku = IKUModel::all();
+        
+        if ($request->tahun) {
+            $iku = $iku->where('tahun', $request->tahun);
+        }
+
+        if ($request->unitkerja_name) {
+            $unitkerja = UnitKerjaModel::where('name_dept', $request->unitkerja_name)->firstOrFail();
+            $iku = $iku->where('unitkerja_id', $unitkerja->id);
+        }
+
+        // $iku = DB::table('iku')
+        //             ->join('unitkerja', 'iku.unitkerja_id', '=', 'unitkerja.id')
+        //             ->select('iku.*', 'unitkerja.name_dept')
+        //             ->where('tahun', $tahun)
+        //             ->where('unitkerja.name_dept', $unitkerja_name)
+        //             ->get();
+        
+        return view('iku.index', [
             "title" => "IKU",
             "iku" => $iku,
             "unitkerja" => $unitkerja

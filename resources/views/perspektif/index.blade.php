@@ -13,17 +13,20 @@
     <hr>
     <div class="row justify-between">
         <div class="col">
-            <select name="filter-pembuat" id="filter-pembuat" placeholder="Badan Pembuat" class="dropdown-tahun">
-            <option value="">Badan Pembuat</option>
-
-                @php
-                    $groupedData = $perspektif->groupBy('name_perspektif');
-                @endphp
-
-                @foreach ($groupedData as $groupedValue => $dataArray)
-                    <option value="{{ $groupedValue }}">{{ $groupedValue }}</option>
-                @endforeach
-            </select>
+            <form action="{{ route('perspektif.filter') }}" method="POST">
+                @csrf
+                <div class="form-group d-flex">
+                    <select name="name_perspektif" id="name_perspektif" placeholder="Badan Pembuat" class="dropdown-tahun">
+                        <option value="">Badan Pembuat</option>
+                        @php $groupedData = $perspektif->groupBy('name_perspektif'); @endphp
+                        @foreach ($groupedData as $groupedValue => $dataArray)
+                            <option value="{{ $groupedValue }}">{{ $groupedValue }}</option>
+                        @endforeach
+                    </select>
+                    <button type="submit" class="btn mt-1 h-50">Filter</button>
+                    <a href="{{ route('perspektif.index') }}" class="btn mt-1 w-50 h-50">Reset Filter</a>
+                </div>
+            </form>
         </div>
         <div class="col">
             <a href="/perspektif/create" class="btn mb-3">Add New</a>

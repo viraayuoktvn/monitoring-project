@@ -3,10 +3,8 @@
 <script>
     // Get the input element
     var inputElement = document.getElementById("file-input");
-
     // Get the file name element
     var fileNameElement = document.getElementById("file-name");
-
     // Add event listener to the input element
     inputElement.addEventListener("change", function() {
         // If a file is selected
