@@ -7,9 +7,9 @@
             <a href="/user">
                 <button class="btn-sidebar">
                     <div class="d-flex justify-between gap-2">
-                        <div class="avatar-profile-sidebar px-auto py-auto">
+                        {{-- <div class="avatar-profile-sidebar px-auto py-auto">
                             <img src="{{ Storage::url('images/'.auth()->user()->photo) }}" alt="{{ auth()->user()->name }}" height="60" weight="60">
-                        </div>
+                        </div> --}}
                         <div class="text-profile">
                             <h4 class="h4-sidebar"><strong>{{ auth()->user()->name }}</strong></h4>
                         </div>

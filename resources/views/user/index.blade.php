@@ -17,9 +17,9 @@
         @csrf
         
         <div class="edit-profile">
-            <div class="avatar-profile">
+            {{-- <div class="avatar-profile">
                 <img src="{{ asset('storage/images/'.$user->photo) }}" alt="{{ $user->name }}">
-            </div>
+            </div> --}}
 
             <div class="mt-5">
                 <div class="mb-3">
