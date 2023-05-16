@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="col-md-12">
-    <h1 class="mt-4"> PERSPEKTIF </h1>
+    <h1 class="mt-4"> EDIT PERSPEKTIF </h1>
     <hr>
 
     <form class="py-3" method="post" action="{{ route('perspektif.update', $perspektif->id)}}" enctype="multipart/form-data">

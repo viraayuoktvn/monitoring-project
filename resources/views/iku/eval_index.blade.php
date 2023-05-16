@@ -100,21 +100,6 @@
                 <td>{{ $ik1->iku['target_iku'] }}</td>
                 <td>{{ $ik1->iku['target_iku'] }}</td>
                 <td>{{ $ik1->iku['target_iku'] }}</td>
-
-                {{-- <td>{{ $kumulatif }}</td>
-                <td>{{ $score }}</td>
-                <td>{{ $score }}</td>
-                <td>{{ $score }}</td>
-                <td>{{ $score }}</td>
-                <td>{{ $score }}</td>
-                <td>{{ $score }}</td>
-                <td>{{ $score }}</td>
-                <td>{{ $score }}</td>
-                <td>{{ $score }}</td>
-                <td>{{ $score }}</td>
-                <td>{{ $score }}</td>
-                <td>{{ $score }}</td> --}}
-
                 <td rowspan="3">
                     <a href="" class="badge bg-warning">Edit</a>
                     <form action="/iku/eval_index" method="post" class="d-inline">

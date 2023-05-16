@@ -9,7 +9,6 @@ use App\Models\UnitKerjaModel;
 use App\Models\BulanModel;
 use App\Models\IKUModelV2;
 use Illuminate\Support\Facades\DB;
-
 class IKUController extends Controller
 {
     public function index ()
@@ -23,7 +22,6 @@ class IKUController extends Controller
             "unitkerja" => $unitkerja
         ]);
     }
-
     public function filter(Request $request)
     {   
         $unitkerja = UnitKerjaModel::all();
@@ -37,13 +35,6 @@ class IKUController extends Controller
             $unitkerja = UnitKerjaModel::where('name_dept', $request->unitkerja_name)->firstOrFail();
             $iku = $iku->where('unitkerja_id', $unitkerja->id);
         }
-
-        // $iku = DB::table('iku')
-        //             ->join('unitkerja', 'iku.unitkerja_id', '=', 'unitkerja.id')
-        //             ->select('iku.*', 'unitkerja.name_dept')
-        //             ->where('tahun', $tahun)
-        //             ->where('unitkerja.name_dept', $unitkerja_name)
-        //             ->get();
         
         return view('iku.index', [
             "title" => "IKU",
@@ -51,7 +42,6 @@ class IKUController extends Controller
             "unitkerja" => $unitkerja
         ]);
     }
-
     public function create ()
     {
         $perspektif = PerspektifModel::all();
@@ -63,7 +53,6 @@ class IKUController extends Controller
             "unitkerja" => $unitkerja
         ]);
     }
-
     public function edit($id)
     {
         $unitkerja = UnitKerjaModel::all();
@@ -76,7 +65,6 @@ class IKUController extends Controller
             'unitkerja' => $unitkerja
         ]);
     }
-
     public function update (Request $request, $id)
     {
         $this->validate($request, [
@@ -101,7 +89,6 @@ class IKUController extends Controller
         $iku->update();
         return redirect('/iku/index')->with('success', 'Data berhasil diubah.');
     }
-
     public function store (Request $request)
     {
         $request->validate([
@@ -126,13 +113,11 @@ class IKUController extends Controller
         $iku->save();
         return redirect('/iku/index')->with('success', 'Data berhasil ditambahkan.');
     }
-
     public function destroy($id)
     { 
         IKUModel::destroy($id);
         return redirect('/iku/index')->with('success', 'Data berhasil dihapus!');
     }
-
     public function eval_index ()
     {
         $evaliku = IKUModelV2::all();
@@ -146,7 +131,6 @@ class IKUController extends Controller
             "bulan" => $bulan
         ]);
     }
-
     public function eval_create ()
     {
         $iku = IKUModel::all();
@@ -158,7 +142,6 @@ class IKUController extends Controller
             "bulan" => $bulan
         ]);
     }
-
     public function eval_store (Request $request)
     {
         $request->validate([
@@ -175,7 +158,6 @@ class IKUController extends Controller
         $evaliku->save();
         return redirect('/iku/eval_index')->with('success', 'Data berhasil ditambahkan.');
     }
-
     public function eval_edit($id)
     {
         $unitkerja = UnitKerjaModel::all();
@@ -189,7 +171,6 @@ class IKUController extends Controller
             'unitkerja' => $unitkerja
         ]);
     }
-
     public function eval_update (Request $request, $id)
     {
         $this->validate($request, [

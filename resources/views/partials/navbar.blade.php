@@ -15,13 +15,6 @@
 
         @auth
             <li class="d-flex justify-between gap-0">
-                {{-- <input
-                    type="search"
-                    class="form-control mx-1 my-2"
-                    placeholder="Search..."
-                    aria-label="Search"
-                    aria-describedby="search-addon"
-                /> --}}
                 <div class="d-flex">
                     <button type="submit" class="btnnavbar" href="#">*Settings
                         <img src="/images/settings.png" alt="settings" height="25"/>                    
@@ -35,7 +28,6 @@
                     </form>
                 </div>
             </li>
-
         @else
             <div class="d-flex">
                 <form action="/logout" method="post">
@@ -46,7 +38,5 @@
                 </form>
             </div>
         @endauth
-
-
     </div>
 </nav>

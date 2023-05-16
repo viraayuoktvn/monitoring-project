@@ -2,12 +2,6 @@
 
 @section('content')
 
-{{-- @if($message = Session::get('success'))
-    <div class="alert alert-success">
-        {{ $message }}
-    </div>
-@endif --}}
-
 <div class="row justify-content-center">
   <div class="col-lg-4">
 

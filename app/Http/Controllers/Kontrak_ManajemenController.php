@@ -8,8 +8,6 @@ use App\Models\PerspektifModel;
 use App\Models\Kontrak_ManajemenV2;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\VarDumper\Cloner\Data;
-
-
 class Kontrak_ManajemenController extends Controller
 {
     public function index()
